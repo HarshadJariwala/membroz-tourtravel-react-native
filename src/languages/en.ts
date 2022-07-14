@@ -519,7 +519,7 @@ export default {
     recentbookingtext: "Recent Booking",
     recenttransactionstext: "Recent Transactions",
     membershipdetailstext: "Membership Details",
-    activitycalendertext: "Activity Calendar",
+    activityrtext: "Activity",
 
     //Invite A Friends Text
     mainTitel: "Invite your friends &",

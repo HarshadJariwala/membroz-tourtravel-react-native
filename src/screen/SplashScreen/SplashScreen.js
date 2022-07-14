@@ -47,12 +47,9 @@ function SplashScreen(props) {
             axiosConfig(token);
             return props.navigation.replace(SCREEN.TABNAVIGATION);
         } else {
-            if (!startup) {
-                return props.navigation.replace(SCREEN.SPLASHSCREENONE);
-            } else {
-                return props.navigation.replace(SCREEN.TABNAVIGATION);
-            }
+            return props.navigation.replace(SCREEN.TABNAVIGATION);
         }
+
     }
 
     async function splashScreen() {
