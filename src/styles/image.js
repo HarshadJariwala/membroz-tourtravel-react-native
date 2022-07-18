@@ -34,12 +34,12 @@ import USERGROUPICON from '../../src/assets/images/usergroupicon.png';
 import STOPWATCHICON from '../../src/assets/images/stopwatchicon.png';
 import BACKGROUNDIMAGE from '../../src/assets/images/background.png';
 import RESTAURANT_LOGO from '../../src/assets/images/restaurant_logo.png';
-import SPLASH from "../../src/assets/images/splash.jpeg";
-import FOODIMAGE1 from "../../src/assets/images/foodimage1.jpeg";
-import SPLASH2 from "../../src/assets/images/splash2.jpeg";
+// import SPLASH from "../../src/assets/images/splash.jpeg";
+// import FOODIMAGE1 from "../../src/assets/images/foodimage1.jpeg";
+// import SPLASH2 from "../../src/assets/images/splash2.jpeg";
 import CHAIR from "../../src/assets/images/chair.png";
 import USER from "../../src/assets/images/user.png";
-import CARDFOOD from "../../src/assets/images/cardfood.webp";
+// import cardfood from "../../src/assets/images/cardfood.webp";
 import DELETEICON from "../../src/assets/images/delete.png";
 import MINUS from "../../src/assets/images/minus.png";
 import PLUS from "../../src/assets/images/plus.png";
@@ -53,6 +53,9 @@ import CALENDERICON from '../../src/assets/images/calender_icon.png';
 import TRAVEL1 from '../../src/assets/images/Travel1.jpeg';
 import TRAVEL2 from '../../src/assets/images/Travel2.jpeg';
 import TRAVEL3 from '../../src/assets/images/Travel3.jpeg';
+import LOCATIONICON from '../../src/assets/images/locationicon.png';
+import ACTIVITYICON from '../../src/assets/images/activityicon.png';
+import PROFILEICON from '../../src/assets/images/profileicon.png';
 
 export {
     BACKGROUND_IMAGE, MEMBROZ_LOGO, USERPROFILE, INVITEICON,
@@ -60,7 +63,7 @@ export {
     PREFERENCE, OFFERS, TERMS, CONTACT, INVITEEARN, TIMEICON, RIGHTSIDE, LEFTSIDE,
     ASSESSMENTICON, TRAININGICON, HOMEICON, MENUICON, MYBOOKINGICON,
     ACTIVITYCALENDERICON, EXPLOREICON, LOGOUTICON, USERGROUPICON, MEMBERICON, TIME2ICON,
-    STOPWATCHICON, BACKGROUNDIMAGE, RESTAURANT_LOGO, SPLASH, FOODIMAGE1, SPLASH2, CHAIR,
-    USER, CARDFOOD, DELETEICON, MINUS, PLUS, VEGICON, FORK, BAG, GOOGLE, OTPIMAGE, CLIPBOARD, CALENDERICON, TRAVEL1,
-    TRAVEL2, TRAVEL3
+    STOPWATCHICON, BACKGROUNDIMAGE, RESTAURANT_LOGO, CHAIR,
+    USER, DELETEICON, MINUS, PLUS, VEGICON, FORK, BAG, GOOGLE, OTPIMAGE, CLIPBOARD, CALENDERICON, TRAVEL1,
+    TRAVEL2, TRAVEL3, LOCATIONICON, ACTIVITYICON, PROFILEICON
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Dimensions, SafeAreaView, Image, StatusBar, ScrollView, Platform, TouchableOpacity } from "react-native";
+import { View, Text, Dimensions, SafeAreaView, Image, StatusBar, ScrollView, Platform, TouchableOpacity, ImageBackground } from "react-native";
 import Swiper from "react-native-swiper";
 import languageConfig from "../../languages/languageConfig";
 import * as SCREEN from "../../context/screen/screenName";
@@ -15,17 +15,18 @@ const WIDTH = Dimensions.get('window').width;
 const HomeScreen = () => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.BACKGROUNDCOLOR }}>
-            <StatusBar hidden={false} translucent={false} backgroundColor={COLOR.STATUSBARCOLOR} barStyle={Platform.OS === 'ios' ? KEY.DARK_CONTENT : KEY.DARK_CONTENT} />
-            <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
+            <StatusBar hidden={false} translucent={true} backgroundColor={KEY.TRANSPARENT} barStyle={Platform.OS === 'ios' ? KEY.DARK_CONTENT : KEY.DARK_CONTENT} />
+            {/* <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
                 <Text style={{
                     fontSize: FONT.FONT_SIZE_18, fontFamily: FONT.FONT_BOLD,
                     fontWeight: FONT.FONT_WEIGHT_MEDIAM,
                     color: COLOR.BLACK
                 }}>{languageConfig.home}</Text>
-            </View>
+            </View> */}
+            {/* <ImageBackground source={IMAGE.TRAVEL3} style={{ width: 100, height: 100 }}></ImageBackground> */}
             <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={KEY.ALWAYS}>
-                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, marginTop: 10 }}>
-                    <Swiper height={200} showsPagination={false}>
+                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, marginTop: 10, marginBottom: 10 }}>
+                    <Swiper height={200} width={WIDTH} showsPagination={false}>
                         <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
                             <Image
                                 resizeMode={KEY.COVER}
@@ -50,9 +51,61 @@ const HomeScreen = () => {
                     </Swiper>
 
                 </View>
-
                 <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, flexDirection: KEY.COLUMN }}>
-                    <Text style={styles.titletext}>{"Travel by Categories"}</Text>
+                    <Text style={styles.titletext}>{"Category"}</Text>
+                    <View style={{
+                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BLACK,
+                        marginRight: 15, marginLeft: 15, width: WIDTH * 0.2, marginBottom: 5, marginTop: 10
+                    }} />
+                </View>
+                <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+                    <View style={{ flexDirection: KEY.ROW, marginLeft: 10, marginRight: 10, marginBottom: 10 }}>
+                        <View style={styles.categorymaincard}>
+                            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, marginTop: 7, marginLeft: 8 }}>
+                                <Image style={styles.cardimagestyle} source={IMAGE.TRAVEL1} />
+                                <Text style={{ marginTop: 7, fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, color: COLOR.BLACK }}>
+                                    {"Goa"}
+                                </Text>
+                                <View>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={styles.categorymaincard}>
+                            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, marginTop: 7, marginLeft: 8 }}>
+                                <Image style={styles.cardimagestyle} source={IMAGE.TRAVEL1} />
+                                <Text style={{ marginTop: 7, fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, color: COLOR.BLACK }}>
+                                    {"Gir nar"}
+                                </Text>
+                                <View>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={styles.categorymaincard}>
+                            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, marginTop: 7, marginLeft: 8, }}>
+                                <Image style={styles.cardimagestyle} source={IMAGE.TRAVEL1} />
+                                <Text style={{ marginTop: 7, fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, color: COLOR.BLACK }}>
+                                    {"Nainital"}
+                                </Text>
+                                <View>
+                                </View>
+                            </View>
+                        </View>
+
+                        <View style={styles.categorymaincard}>
+                            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, marginTop: 7, marginLeft: 8, }}>
+                                <Image style={styles.cardimagestyle} source={IMAGE.TRAVEL1} />
+                                <Text style={{ marginTop: 7, fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, color: COLOR.BLACK }}>
+                                    {"Manali"}
+                                </Text>
+                                <View>
+                                </View>
+                            </View>
+                        </View>
+
+                    </View>
+                </ScrollView>
+                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, flexDirection: KEY.COLUMN }}>
+                    <Text style={styles.titletext}>{"Travel by Location"}</Text>
                     <View style={{
                         borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BLACK,
                         marginRight: 15, marginLeft: 15, width: WIDTH * 0.2, marginBottom: 5, marginTop: 10
@@ -76,8 +129,6 @@ const HomeScreen = () => {
                             style={styles.imagestyle}
                             source={IMAGE.TRAVEL1}
                             resizeMode={KEY.COVER}
-                            // blurradius={0}
-                            blurType="light"
                         />
                         <View style={styles.text}>
                             <Text style={styles.cardtext}>{"Hill Station"}</Text>
@@ -114,56 +165,56 @@ const HomeScreen = () => {
                         marginRight: 15, marginLeft: 15, width: WIDTH * 0.2, marginBottom: 5, marginTop: 10
                     }} />
                 </View>
+
                 <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-                    <View style={{ flexDirection: KEY.ROW }}>
+                    <View style={{ flexDirection: KEY.ROW, marginLeft: 10, marginRight: 10 }}>
                         <TouchableOpacity style={styles.mainstyle}>
                             <View style={styles.imagecardstyle}>
                                 <Image source={IMAGE.TRAVEL1} style={styles.imagestyle1} />
                             </View>
                             <View style={{ flexDirection: KEY.COLUMN, marginLeft: 10 }}>
-                                <View style={{ flexDirection: KEY.ROW }}>
-                                    <Text style={styles.titletext}>
-                                        {"Maldives"}
-                                    </Text>
-                                    <Text style={{ marginLeft: 10, marginTop: 2, color: COLOR.DEFALUTCOLOR, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>
-                                        {"4N/5D"}
-                                    </Text>
-                                </View>
-                                <Text style={[styles.titletext, { marginTop: 10 }]}>{"$ 20200"}</Text>
+                                <Text style={styles.titletext}>
+                                    {"Maldives"}
+                                </Text>
+                                <Text style={{ marginTop: 2, color: COLOR.DEFALUTCOLOR, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>
+                                    {"4N/5D"}
+                                </Text>
+
+                                <Text style={[styles.titletext, {}]}>{"$ 20200"}</Text>
                                 <Text>{"per person"}</Text>
                             </View>
                         </TouchableOpacity>
+
                         <TouchableOpacity style={styles.mainstyle}>
                             <View style={styles.imagecardstyle}>
-                                <Image source={IMAGE.TRAVEL1} style={styles.imagestyle1} />
+                                <Image source={IMAGE.TRAVEL2} style={styles.imagestyle1} />
                             </View>
                             <View style={{ flexDirection: KEY.COLUMN, marginLeft: 10 }}>
-                                <View style={{ flexDirection: KEY.ROW }}>
-                                    <Text style={styles.titletext}>
-                                        {"Goa"}
-                                    </Text>
-                                    <Text style={{ marginLeft: 10, marginTop: 2, color: COLOR.DEFALUTCOLOR, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>
-                                        {"4N/5D"}
-                                    </Text>
-                                </View>
-                                <Text style={[styles.titletext, { marginTop: 10 }]}>{"$ 10200"}</Text>
+                                <Text style={styles.titletext}>
+                                    {"Maldives"}
+                                </Text>
+                                <Text style={{ marginTop: 2, color: COLOR.DEFALUTCOLOR, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>
+                                    {"4N/5D"}
+                                </Text>
+
+                                <Text style={[styles.titletext, {}]}>{"$ 20200"}</Text>
                                 <Text>{"per person"}</Text>
                             </View>
                         </TouchableOpacity>
+
                         <TouchableOpacity style={styles.mainstyle}>
                             <View style={styles.imagecardstyle}>
-                                <Image source={IMAGE.TRAVEL1} style={styles.imagestyle1} />
+                                <Image source={IMAGE.TRAVEL3} style={styles.imagestyle1} />
                             </View>
                             <View style={{ flexDirection: KEY.COLUMN, marginLeft: 10 }}>
-                                <View style={{ flexDirection: KEY.ROW }}>
-                                    <Text style={styles.titletext}>
-                                        {"Beach"}
-                                    </Text>
-                                    <Text style={{ marginLeft: 10, marginTop: 2, color: COLOR.DEFALUTCOLOR, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>
-                                        {"4N/5D"}
-                                    </Text>
-                                </View>
-                                <Text style={[styles.titletext, { marginTop: 10 }]}>{"$ 10200"}</Text>
+                                <Text style={styles.titletext}>
+                                    {"Maldives"}
+                                </Text>
+                                <Text style={{ marginTop: 2, color: COLOR.DEFALUTCOLOR, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>
+                                    {"4N/5D"}
+                                </Text>
+
+                                <Text style={[styles.titletext, {}]}>{"$ 20200"}</Text>
                                 <Text>{"per person"}</Text>
                             </View>
                         </TouchableOpacity>
@@ -177,38 +228,41 @@ const HomeScreen = () => {
                         marginRight: 15, marginLeft: 15, width: WIDTH * 0.2, marginBottom: 5, marginTop: 10
                     }} />
                 </View>
-                <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-                    <TouchableOpacity style={styles.mainstyle}>
-                        <View style={styles.imagecardstyle}>
-                            <Image source={IMAGE.TRAVEL1} style={styles.image1} />
-                        </View>
-                        <View style={{ marginLeft: 10 }}>
-                            <Text style={styles.titletext}>
-                                {"Manali"}
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.mainstyle}>
-                        <View style={styles.imagecardstyle}>
-                            <Image source={IMAGE.TRAVEL2} style={styles.image1} />
-                        </View>
-                        <View style={{ marginLeft: 10 }}>
-                            <Text style={styles.titletext}>
-                                {"National"}
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.mainstyle}>
-                        <View style={styles.imagecardstyle}>
-                            <Image source={IMAGE.TRAVEL3} style={styles.image1} resizeMode={KEY.COVER} />
-                        </View>
-                        <View style={{ marginLeft: 10 }}>
-                            <Text style={styles.titletext}>
-                                {"Mumbai"}
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                </ScrollView>
+
+                <View style={{ marginLeft: 10, marginRight: 10 }}>
+                    <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+                        <TouchableOpacity style={styles.mainstyle1}>
+                            <View >
+                                <Image source={IMAGE.TRAVEL1} style={styles.image1} />
+                            </View>
+                            <View style={{ marginLeft: 10 }}>
+                                <Text style={styles.titletext}>
+                                    {"Manali"}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.mainstyle1}>
+                            <View>
+                                <Image source={IMAGE.TRAVEL2} style={styles.image1} />
+                            </View>
+                            <View style={{ marginLeft: 10 }}>
+                                <Text style={styles.titletext}>
+                                    {"National"}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.mainstyle1}>
+                            <View >
+                                <Image source={IMAGE.TRAVEL3} style={styles.image1} resizeMode={KEY.COVER} />
+                            </View>
+                            <View style={{ marginLeft: 10 }}>
+                                <Text style={styles.titletext}>
+                                    {"Mumbai"}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                    </ScrollView>
+                </View>
             </ScrollView >
         </SafeAreaView >
     )

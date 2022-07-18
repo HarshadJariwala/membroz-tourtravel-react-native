@@ -1,7 +1,7 @@
 //APP MAIN COLOR
 export const DEFALUTCOLOR = '#F29015';
 export const DEFAULTLIGHT = '#FFFFFF';
-export const BACKGROUNDCOLOR = '#FFFFFF';
+export const BACKGROUNDCOLOR = '#FDFAF5';
 export const STATUSBARCOLOR = '#FFFFFF';
 export const SPLASHSCREENCOLOR = '#FFFFFF';
 export const WHITE = '#FFFFFF';
@@ -16,7 +16,7 @@ export const ERRORCOLOR = '#FF0000';
 export const SPLASHMODELCOLOR = '#FFFFFF';
 export const GALLERYCOLOR = 'rgba(0,0,0,0.5)';
 export const LIGHT_RED = "#E54444";
-export const LIGHT_GREEN = "#47E86D"
+export const LIGHT_GREEN = "#3CBF75"
 
 // ACTIONS
 export const SUCCESS = '#3adb76';
@@ -47,7 +47,8 @@ export const WELDON_BLUE = '#7D95B6';
 //TEXT COLOR
 export const X11_GRAY = '#BDBDBD';
 export const PALE_TAUPE = '#C29E84';
-export const LIGHT_BLACK = '#666666';
+// export const LIGHT_BLACK = '#666666';
+export const LIGHT_BLACK = '#333333'
 export const LIGHT_BLUE = '#556CD9'
 
 //ICON COLOR

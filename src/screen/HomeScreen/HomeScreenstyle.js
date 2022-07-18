@@ -6,10 +6,34 @@ const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
-    image: {
+    categorymaincard: {
+        // justifyContent: KEY.CENTER,
+        // alignItems: KEY.CENTER,
+        width: 130,
+        height: 50,
+        shadowColor: COLOR.BLACK,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        elevation: 3,
         borderRadius: 10,
-        width: WIDTH - 30,
-        height: 180
+        marginHorizontal: 5,
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    cardimagestyle: {
+        width: 38,
+        height: 38,
+        borderRadius: 5,
+
+    },
+    image: {
+        // borderRadius: 10,
+        width: WIDTH,
+        height: 200
     },
     titletext: {
         fontSize: FONT.FONT_SIZE_16,
@@ -65,7 +89,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLOR.WHITE,
         // borderWidth: 1, borderColor: COLOR.BLACK,
         width: WIDTH / 2 - 40,
-        height: 210,
+        height: 220,
         shadowColor: COLOR.BLACK,
         shadowOffset: {
             width: 0,
@@ -82,18 +106,41 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     imagecardstyle: {
-        margin: 5
+
     },
     imagestyle1: {
-        width: WIDTH / 2 - 50,
+        width: WIDTH / 2 - 40,
         height: 120,
-        borderRadius: 10
+        borderTopRightRadius: 10,
+        borderTopLeftRadius: 10
     },
     image1: {
-        width: WIDTH / 2 - 50,
-        height: 170,
-        borderRadius: 10
+        width: WIDTH - 100,
+        height: 150,
+        borderTopRightRadius: 10,
+        borderTopLeftRadius: 10
     },
+    mainstyle1: {
+        backgroundColor: COLOR.WHITE,
+        // borderWidth: 1, borderColor: COLOR.BLACK,
+        width: WIDTH - 100,
+        height: 180,
+        shadowColor: COLOR.BLACK,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        elevation: 3,
+        marginLeft: 10,
+        borderRadius: 10,
+        marginBottom: 10,
+        marginTop: 10,
+        marginLeft: 10,
+        marginRight: 10
+    },
+
 
 
 })
