@@ -9,3 +9,6 @@ export const TOURPAKAGESCREEN = "TourPakageScreen";
 export const TOURPACKAGELISTSCREEN = "TourPackageListScreen";
 export const AVTIVITTOURDETAILS = "Avtivittourdetails";
 export const PAKAGEBOOKINGSCREEN = "PakageBookingScreen";
+export const PACKAGEPRICEDETAILS = "PackagePriceDetails";
+export const PAYMENTMODESCREEN = "paymentmodeScreen";
+export const BOOKINFCONFIRMSCREEN = "Bookinfconfirmscreen"

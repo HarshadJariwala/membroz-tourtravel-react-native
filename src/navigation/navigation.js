@@ -16,6 +16,9 @@ import EXPLORESCREEN from '../screen/ExploreScreen/ExploreScreen';
 import TOURPACKAGELISTSCREEN from '../screen/TourPackage/TourPackageListScreen';
 import AVTIVITTOURDETAILS from '../screen/ActivityScreen/Avtivittourdetails';
 import PAKAGEBOOKINGSCREEN from '../screen/TourPackage/PakageBookingScreen';
+import PACKAGEPRICEDETAILS from '../screen/TourPackage/PackagePriceDetails';
+import PAYMENTMODESCREEN from '../screen/TourPackage/paymentmodeScreen';
+import BOOKINFCONFIRMSCREEN from '../screen/TourPackage/Bookinfconfirmscreen';
 
 import languageConfig from '../languages/languageConfig';
 import * as SCREEN from '../context/screen/screenName';
@@ -84,6 +87,21 @@ const HomeStackScreen = () => {
                 component={EXPLORESCREEN}
                 options={{ headerShown: false }}
             />
+            <Stack.Screen
+                name="PackagePriceDetails"
+                component={PACKAGEPRICEDETAILS}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="paymentmodeScreen"
+                component={PAYMENTMODESCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Bookinfconfirmscreen"
+                component={BOOKINFCONFIRMSCREEN}
+                options={{ headerShown: false }}
+            />
         </Stack.Navigator>
     )
 
@@ -108,8 +126,21 @@ const PackageStackScreen = () => {
                 component={PAKAGEBOOKINGSCREEN}
                 options={{ headerShown: false }}
             />
-
-
+            <Stack.Screen
+                name="PackagePriceDetails"
+                component={PACKAGEPRICEDETAILS}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="paymentmodeScreen"
+                component={PAYMENTMODESCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Bookinfconfirmscreen"
+                component={BOOKINFCONFIRMSCREEN}
+                options={{ headerShown: false }}
+            />
 
         </Stack.Navigator>
     )
@@ -240,6 +271,12 @@ const getTabBarVisibility = (route) => {
         return 'none';
     } else if (routeName == SCREEN.AVTIVITTOURDETAILS) {
         return 'none';
+    } else if (routeName == SCREEN.PACKAGEPRICEDETAILS) {
+        return 'none';
+    } else if (routeName == SCREEN.PAYMENTMODESCREEN) {
+        return 'none';
+    } else if (routeName == SCREEN.PAKAGEBOOKINGSCREEN) {
+        return "none";
     }
 }
 

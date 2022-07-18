@@ -74,7 +74,7 @@ const Avtivittourdetails = (props) => {
                             <Text style={[styles.texttitle, { width: WIDTH / 1, lineHeight: 30, marginLeft: 5 }]}>{"One Of the most popular and top-selling Amusement Parks in Bangalore"}</Text>
                         </View>
                     </View>
-                    <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
+                    {/* <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
                         <View style={styles.blackcard}>
                             <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW }}>
                                 <View style={{ flexDirection: KEY.COLUMN, marginLeft: 10 }}>
@@ -88,7 +88,7 @@ const Avtivittourdetails = (props) => {
                                 </View>
                             </View>
                         </View>
-                    </View>
+                    </View> */}
                 </View>
 
             </ScrollView>
