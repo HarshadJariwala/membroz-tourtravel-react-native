@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Dimensions, SafeAreaView, Image, StatusBar, ScrollView, Platform, TouchableOpacity } from "react-native";
 import languageConfig from "../../languages/languageConfig";
 import * as SCREEN from "../../context/screen/screenName";
@@ -11,31 +11,64 @@ import * as COLOR from '../../styles/colors';
 import * as IMAGE from '../../styles/image';
 import Loader from '../../components/loader/index';
 import styles from "./Activityscreenstyle";
+import { MemberLanguage } from '../../services/LocalService/LanguageService';
+import * as LocalService from '../../services/LocalService/LocalService';
+import { firebase } from "@react-native-firebase/crashlytics";
+import axiosConfig from "../../helpers/axiosConfig";
 
-const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
-const ListTab = [
-    {
-        'status': "Domestic"
-    },
-    {
-        'status': "International"
-    }
-]
-
 const ActivityScreen = (props) => {
+    const [logo, setLogo] = useState(null);
+    const [loading, setloading] = useState(true)
+    const [activityList, setActivityList] = useState([]);
+    const [customerInfo, setCustomerInfo] = useState(null);
+    const [refreshing, setrefreshing] = useState(false);
 
-    const [status, setStatus] = useState("Domestic");
-    const [domesticList, setDomesticList] = useState([]);
+    useEffect(() => {
+        //LANGUAGE MANAGEMENT FUNCTION
+        MemberLanguage();
+        RemoteController();
+        getMemberDeatilsLocalStorage();
+    }, []);
 
-    const setStatusFilter = (status, index) => {
-        const tab = ListTab.map((item) => {
-            item.selected = false;
-            return item;
+    useEffect(() => {
+    }, [loading, logo, refreshing])
+
+    //REMOTE DATA FATCH IN LOCAL STORAGE
+    const RemoteController = async () => {
+        var userData = await LocalService.RemoteServerController();
+        if (userData) {
+            setLogo(userData.applogo);
+            axiosConfig(userData.authkey);
+            console.log(`userData.authkey`, userData.authkey);
+        }
+    };
+
+    //TIME OUT FUNCTION
+    const wait = (timeout) => {
+        return new Promise(resolve => {
+            setTimeout(resolve, timeout);
         });
-        tab[index].selected = true;
-        setStatus(status)
+    }
+
+    //ON PRESS MAIN MENU
+    const onPressTomainmenu = () => {
+        if (customerInfo) {
+            props.navigation.navigate(SCREEN.HOMESCREEN);
+        } else {
+            props.navigation.navigate(SCREEN.AUTH);
+        }
+    }
+
+    //GET MEMBER DATA IN MOBILE LOCAL STORAGE
+    const getMemberDeatilsLocalStorage = async () => {
+        getActivityList();
+    }
+
+    //ACTIVITY LIST FETCH DATA THROUGHT API
+    const getActivityList = () => {
+
     }
 
     //OPEN PAYMENT SCREEN
