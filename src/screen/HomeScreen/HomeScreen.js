@@ -15,17 +15,9 @@ const WIDTH = Dimensions.get('window').width;
 const HomeScreen = () => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.BACKGROUNDCOLOR }}>
-            <StatusBar hidden={false} translucent={true} backgroundColor={KEY.TRANSPARENT} barStyle={Platform.OS === 'ios' ? KEY.DARK_CONTENT : KEY.DARK_CONTENT} />
-            {/* <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
-                <Text style={{
-                    fontSize: FONT.FONT_SIZE_18, fontFamily: FONT.FONT_BOLD,
-                    fontWeight: FONT.FONT_WEIGHT_MEDIAM,
-                    color: COLOR.BLACK
-                }}>{languageConfig.home}</Text>
-            </View> */}
-            {/* <ImageBackground source={IMAGE.TRAVEL3} style={{ width: 100, height: 100 }}></ImageBackground> */}
+            <StatusBar hidden={false} translucent={true} backgroundColor={COLOR.STATUSBARCOLOR} barStyle={Platform.OS === 'ios' ? KEY.DARK_CONTENT : KEY.DARK_CONTENT} />
             <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={KEY.ALWAYS}>
-                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, marginTop: 10, marginBottom: 10 }}>
+                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, marginTop: 0, marginBottom: 10 }}>
                     <Swiper height={200} width={WIDTH} showsPagination={false}>
                         <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
                             <Image
@@ -263,8 +255,8 @@ const HomeScreen = () => {
                         </TouchableOpacity>
                     </ScrollView>
                 </View>
-            </ScrollView >
-        </SafeAreaView >
+            </ScrollView>
+        </SafeAreaView>
     )
 }
 
