@@ -128,7 +128,7 @@ const TourPackageListScreen = (props) => {
                                             <Text style={{ color: COLOR.WHITE, fontSize: FONT.FONT_SIZE_16, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontFamily: FONT.FONT_BOLD }}>{"$20,000"}</Text>
                                             <Text style={{ color: COLOR.WHITE, fontSize: FONT.FONT_SIZE_16 }}>{"per person"}</Text>
                                         </View>
-                                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, marginRight: 10 }}>
+                                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, marginRight: 10, }}>
                                             <TouchableOpacity style={styles.continuebutton} onPress={() => onPresstoPackageBooking()}>
                                                 <Text style={{ fontSize: FONT.FONT_SIZE_18, color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"Continue"}</Text>
                                             </TouchableOpacity>

@@ -7,11 +7,13 @@ const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
+    maincontainer: {
+        justifyContent: KEY.CENTER,
+        alignItems: KEY.CENTER
+    },
     maincard: {
-        width: WIDTH - 0,
-        // borderRadius: 5,
-        flexDirection: KEY.COLUMN,
         backgroundColor: COLOR.WHITE,
+        width: WIDTH - 30,
         shadowColor: COLOR.BLACK,
         shadowOffset: {
             width: 0,
@@ -23,13 +25,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         borderRadius: 10
-    },
-    titletext: {
-        fontSize: FONT.FONT_SIZE_18,
-        fontFamily: FONT.FONT_BOLD,
-        fontWeight: FONT.FONT_WEIGHT_MEDIAM,
-        color: COLOR.BLACK,
-        marginBottom: 5
     },
     blackcard: {
         width: WIDTH,
@@ -47,27 +42,7 @@ const styles = StyleSheet.create({
         alignItems: KEY.CENTER,
         alignSelf: KEY.FLEX_END
     },
-    texttitle: {
-        fontSize: FONT.FONT_SIZE_16,
-        fontFamily: FONT.FONT_BOLD,
-        fontWeight: FONT.FONT_WEIGHT_MEDIAM,
-        color: COLOR.BLACK,
-        marginBottom: 5
-    },
-    photogallerystyle: {
-        width: WIDTH / 2 - 30,
-        height: 150,
-        borderRadius: 10,
-        marginLeft: 5,
-        marginRight: 5,
-        marginBottom: 5
-    },
-    decriptiontext: {
-        marginLeft: 10,
-        color: COLOR.BLACK,
-        fontFamily: FONT.FONT_BOLD,
-        fontWeight: FONT.FONT_WEIGHT_MEDIAM
-    }
+
 })
 
 export default styles;
