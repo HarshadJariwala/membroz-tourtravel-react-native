@@ -86,6 +86,12 @@ const ExploreScreen = (props) => {
         }
     }
 
+    //ON PRESS LOCATION LIST
+    const onPressToLocationList = (item) => {
+        props.navigation.navigate(SCREEN.LOCATIONLIST, { item });
+
+    }
+
     //GET MEMBER DATA IN MOBILE LOCAL STORAGE
     const getMemberDeatilsLocalStorage = async () => {
         var memberInfo = await LocalService.LocalStorageService();
@@ -134,7 +140,7 @@ const ExploreScreen = (props) => {
 
     //RENDER  INTERNATIONALLIST CATEGORY SERVICE FLATLIST
     const InternationalList = ({ item, index }) => (
-        <TouchableOpacity style={styles.mainstyle}>
+        <TouchableOpacity style={styles.mainstyle} onPress={() => onPressToLocationList(item)}>
             <View style={styles.imagecardstyle}>
                 <Image source={{
                     uri: item.property && item.property.image && item.property.image[0] &&
@@ -155,7 +161,7 @@ const ExploreScreen = (props) => {
     //RENDER  DOMESTICLLIST CATEGORY SERVICE FLATLIST
     const DomesticlList = ({ item, index }) => (
         <View style={{ flexDirection: KEY.ROW, justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
-            <TouchableOpacity style={styles.mainstyle}>
+            <TouchableOpacity style={styles.mainstyle} onPress={() => onPressToLocationList(item)}>
                 <View style={styles.imagecardstyle}>
                     <Image source={{
                         uri: item.property && item.property.image && item.property.image[0] &&

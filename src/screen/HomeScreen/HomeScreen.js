@@ -172,7 +172,11 @@ const HomeScreen = (props) => {
     const onPresstoActivityDetails = async (item) => {
         props.navigation.navigate(SCREEN.AVTIVITTOURDETAILS, { item });
     }
+    //ON PRESS LOCATION LIST
+    const onPressToLocationList = (item) => {
+        props.navigation.navigate(SCREEN.LOCATIONLIST, { item });
 
+    }
     //RENDER AVTIVITY SERVICE FLATLIST
     const AvtivityList = ({ item, index }) => (
         <TouchableOpacity style={styles.mainstyle1} onPress={() => onPresstoActivityDetails(item)}>
@@ -194,7 +198,7 @@ const HomeScreen = (props) => {
     //RENDER DOMESTIC SERVICE FLATLIST
     const DomesticList = ({ item, index }) => (
         <View style={{ marginRight: 10, marginLeft: 10, marginTop: 10, marginBottom: 10 }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => onPressToLocationList(item)}>
                 <Image
                     style={styles.imagestyle}
                     source={{
@@ -239,12 +243,13 @@ const HomeScreen = (props) => {
     //RENDER CATEGORY SERVICE FLATLIST
     const CatogoryList = ({ item, index }) => (
         <TouchableOpacity style={styles.categorymaincard}>
-            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, marginTop: 7, marginLeft: 8 }}>
+            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, margin: 5, marginLeft: 6 }}>
                 <Image style={styles.cardimagestyle}
                     source={{
                         uri: item && item.image && item.image &&
                             item.image.attachment ? item.image.attachment : logo
-                    }} />
+                    }}
+                />
                 <Text style={{ marginTop: 7, fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, color: COLOR.BLACK }}>
                     {item.property && item.property.title}
                 </Text>

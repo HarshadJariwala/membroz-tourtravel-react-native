@@ -21,7 +21,7 @@ import axiosConfig from "../../helpers/axiosConfig";
 const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
-const TourPackageListScreen = (props, route) => {
+const TourPackageListScreen = (props) => {
     const PacakageDetailsList = props.route.params === undefined ? null : props.route.params.item;
     const [pacakagedetails, setPacakageDetails] = useState(PacakageDetailsList);
     const [logo, setLogo] = useState(null);
@@ -110,13 +110,13 @@ const TourPackageListScreen = (props, route) => {
                             <View style={{ marginTop: 10, marginBottom: 10, flexDirection: KEY.COLUMN, }}>
                                 <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, marginLeft: 10, marginRight: 10 }}>
                                     <Text style={styles.texttitle}>{"Photo Gallery"}</Text>
-                                    <TouchableOpacity>
+                                    {/* <TouchableOpacity>
                                         <Text style={{
                                             fontSize: FONT.FONT_SIZE_14,
                                             color: COLOR.DEFALUTCOLOR,
                                             marginBottom: 5
                                         }}>{"View all"}</Text>
-                                    </TouchableOpacity>
+                                    </TouchableOpacity> */}
                                 </View>
                                 <ScrollView showsHorizontalScrollIndicator={false} horizontal>
                                     <View style={{ flexDirection: KEY.ROW, marginLeft: 5, marginRight: 5 }}>

@@ -15,3 +15,7 @@ export const PAYMENTMODESCREEN = "paymentmodeScreen";
 export const BOOKINFCONFIRMSCREEN = "Bookinfconfirmscreen";
 export const MAINMENUSCREEN = "MainMenuScreen";
 export const MYPROFILESCREEN = "MyProfileScreen";
+export const PASSWORDCHANGESCREEN = "PasswordChangeScreen";
+export const UPDATEPROFILESCREEN = "UpdateProfileScreen";
+export const LOCATIONLIST = "LocationList";
+export const VIEWIMAGE = "ViewImage";

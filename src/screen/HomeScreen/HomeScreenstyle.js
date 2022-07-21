@@ -8,7 +8,7 @@ const WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
     categorymaincard: {
         width: WIDTH / 2 - 30,
-        height: 50,
+        height: 48,
         shadowColor: COLOR.BLACK,
         shadowOffset: {
             width: 0,
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         elevation: 1,
         borderRadius: 10,
         marginHorizontal: 5,
-        marginTop: 5,
+        marginTop: 8,
         marginBottom: 5,
     },
     cardimagestyle: {

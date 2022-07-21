@@ -47,12 +47,28 @@ const styles = StyleSheet.create({
         fontSize: FONT.FONT_SIZE_16,
         fontFamily: FONT.FONT_BOLD,
         fontWeight: FONT.FONT_WEIGHT_MEDIAM,
-        color: COLOR.BLACK
+        color: COLOR.BLACK,
+
     },
-    imagestyle: {
+    categorymaincard: {
         width: WIDTH / 2 - 30,
-        height: undefined,
-        aspectRatio: 1,
+        height: 48,
+        shadowColor: COLOR.BLACK,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        elevation: 1,
+        borderRadius: 10,
+        marginHorizontal: 5,
+        marginTop: 8,
+        marginBottom: 5,
+    },
+    cardimagestyle: {
+        width: 38,
+        height: 38,
         borderRadius: 5,
     },
     cardtext: {
@@ -81,8 +97,8 @@ const styles = StyleSheet.create({
     },
     mainstyle: {
         backgroundColor: COLOR.WHITE,
-        width: WIDTH / 2 - 40,
-        height: 220,
+        width: WIDTH / 2 - 30,
+        height: 230,
         shadowColor: COLOR.BLACK,
         shadowOffset: {
             width: 0,
@@ -94,17 +110,17 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 10,
         marginTop: 10,
-        margin: 5
+        marginLeft: 10,
+        marginRight: 10
     },
     imagecardstyle: {
         margin: 5
     },
     imagestyle1: {
-        width: WIDTH / 2 - 50,
+        width: WIDTH / 2 - 40,
         height: 120,
         borderRadius: 10
     },
-
 })
 
 export default styles;

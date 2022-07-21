@@ -24,15 +24,12 @@ const PakageBookingScreen = (props) => {
         props.navigation.navigate(SCREEN.PACKAGEPRICEDETAILS);
     }
 
-    const onPresstotourlistscreen = async () => {
-        props.navigation.navigate(SCREEN.TOURPACKAGELISTSCREEN);
-    }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.BACKGROUNDCOLOR }}>
             <StatusBar hidden={false} translucent={false} backgroundColor={COLOR.STATUSBARCOLOR} barStyle={Platform.OS === 'ios' ? KEY.DARK_CONTENT : KEY.DARK_CONTENT} />
             <View style={{ justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, marginTop: 5, marginLeft: 10, marginRight: 10 }}>
-                <TouchableOpacity onPress={() => onPresstotourlistscreen()}>
+                <TouchableOpacity onPress={() => props.navigation.goBack(null)}>
                     <AntDesign name="arrowleft" size={28} color={COLOR.BLACK} />
                 </TouchableOpacity>
                 <View>

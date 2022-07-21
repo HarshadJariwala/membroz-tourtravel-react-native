@@ -21,7 +21,17 @@ import PAYMENTMODESCREEN from '../screen/TourPackage/paymentmodeScreen';
 import BOOKINFCONFIRMSCREEN from '../screen/TourPackage/Bookinfconfirmscreen';
 import MAINMENUSCREEN from '../screen/MainMenuScreen/MainMenuScreen';
 import MYPROFILESCREEN from '../screen/MyProfileScreen/MyProfileScreen';
+import UPDATEPROFILESCREEN from '../screen/MyProfileScreen/UpdateProfileScreen';
+import PASSWORDCHANGESCREEN from '../screen/MyProfileScreen/PasswordChangeScreen';
+import CONTACTUSSCREEN from '../screen/ContactUsScreen/ContactUsScreen';
+import SUBMITQUERY from "../screen/ContactUsScreen/SubmitQuery";
+import FORGETPASSWORDSCREEN from "../screen/ForgetPasswordScreen/ForgetPasswordScreen";
+import NEWPASSWORDSCREEN from "../screen/ForgetPasswordScreen/NewPasswordScreen";
+import OTPSCREEN from "../screen/LoginScreen/Otpscreen";
+import LOCATIONLIST from "../screen/ExploreScreen/LocationList";
+import VIEWIMAGE from "../screen/ExploreScreen/ViewImage";
 
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import languageConfig from '../languages/languageConfig';
 import * as SCREEN from '../context/screen/screenName';
 import * as KEY from "../context/actions/key";
@@ -47,6 +57,20 @@ const AuthStackScreen = () => {
                 component={REGISTERSCREEN}
                 options={{ headerShown: false }}
             />
+            <Stack.Screen
+                name="ForgetPasswordScreen"
+                component={FORGETPASSWORDSCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="NewPasswordScreen"
+                component={NEWPASSWORDSCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Otpscreen"
+                component={OTPSCREEN}
+                options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }
@@ -108,6 +132,57 @@ const HomeStackScreen = () => {
                 component={BOOKINFCONFIRMSCREEN}
                 options={{ headerShown: false }}
             />
+
+            <Stack.Screen
+                name="MyProfileScreen"
+                component={MYPROFILESCREEN}
+                options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+                name="UpdateProfileScreen"
+                component={UPDATEPROFILESCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="PasswordChangeScreen"
+                component={PASSWORDCHANGESCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="ContactUsScreen"
+                component={CONTACTUSSCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="SubmitQuery"
+                component={SUBMITQUERY}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="ForgetPasswordScreen"
+                component={FORGETPASSWORDSCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="NewPasswordScreen"
+                component={NEWPASSWORDSCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Otpscreen"
+                component={OTPSCREEN}
+                options={{ headerShown: false }} />
+
+            <Stack.Screen
+                name="LocationList"
+                component={LOCATIONLIST}
+                options={{ headerShown: false }} />
+
+            <Stack.Screen
+                name="ViewImage"
+                component={VIEWIMAGE}
+                options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 
@@ -172,11 +247,43 @@ const ActivityStackScreen = () => {
 }
 const ExploreStackScreen = () => {
     return (
-        <Stack.Navigator initialRouteName="ExploreScreen"
+        <Stack.Navigator initialRouteName="MyProfileScreen"
             screenOptions={{ headerShadowVisible: false }}>
+
             <Stack.Screen
                 name="ExploreScreen"
                 component={EXPLORESCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="LocationList"
+                component={LOCATIONLIST}
+                options={{ headerShown: false }} />
+            <Stack.Screen
+                name="ViewImage"
+                component={VIEWIMAGE}
+                options={{ headerShown: false }} />
+        </Stack.Navigator>
+    )
+}
+
+const Profile = () => {
+    return (
+        <Stack.Navigator initialRouteName="MyProfileScreen"
+            screenOptions={{ headerShadowVisible: false }}>
+            <Stack.Screen
+                name="MyProfileScreen"
+                component={MYPROFILESCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="UpdateProfileScreen"
+                component={UPDATEPROFILESCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="PasswordChangeScreen"
+                component={PASSWORDCHANGESCREEN}
                 options={{ headerShown: false }}
             />
 
@@ -184,8 +291,21 @@ const ExploreStackScreen = () => {
     )
 }
 
-const Profile = () => {
+const SupportStackScreen = ({ navigation }) => {
+    return (
+        <Stack.Navigator initialRouteName='ContactUsScreen'
+            screenOptions={{ headerShadowVisible: false }}>
+            <Stack.Screen
+                name="ContactUsScreen"
+                component={CONTACTUSSCREEN}
+                options={{ headerShown: false }} />
 
+            <Stack.Screen
+                name="SubmitQuery"
+                component={SUBMITQUERY}
+                options={{ headerShown: false }} />
+        </Stack.Navigator>
+    )
 }
 
 const TabNavigation = () => {
@@ -229,6 +349,13 @@ const TabNavigation = () => {
                                 style={{ width: 30, height: 30, tintColor: color }}
                             />
                         )
+                    } else if (route.name === "login") {
+                        return (
+                            <Image
+                                source={IMAGE.MEMBERICON}
+                                style={{ width: 26, height: 24, tintColor: color }}
+                            />
+                        );
                     } else if (route.name === 'explore') {
                         return (
                             <Image
@@ -241,6 +368,14 @@ const TabNavigation = () => {
                             <Image
                                 source={IMAGE.PROFILEICON}
                                 style={{ width: 28, height: 28, tintColor: color }}
+                            />
+                        );
+                    } else if (route.name === 'Support') {
+                        return (
+                            <MaterialCommunityIcons
+                                name={focused ? 'face-agent' : 'face-agent'}
+                                size={30}
+                                color={color}
                             />
                         );
                     }
@@ -257,14 +392,23 @@ const TabNavigation = () => {
                 tabBarHideOnKeyboard: true,
                 headerTintColor: COLOR.BLACK,
             })}
-            backBehavior="initialRoute"
-        >
+            backBehavior="initialRoute" >
             <Tab.Screen name="home" component={HomeStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.home, tabBarStyle: { display: getTabBarVisibility(route) } })} />
-            <Tab.Screen name="package" component={PackageStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.packages, tabBarStyle: { display: getTabBarVisibility(route) } })} />
-            <Tab.Screen name="activity" component={ActivityStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.activityrtext, tabBarStyle: { display: getTabBarVisibility(route) } })} />
-            <Tab.Screen name="explore" component={ExploreStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.explore, tabBarStyle: { display: getTabBarVisibility(route) } })} />
-            <Tab.Screen name="profile" component={Profile} options={({ route }) => ({ headerShown: false, title: languageConfig.profile, tabBarStyle: { display: getTabBarVisibility(route) } })} />
 
+            <Tab.Screen name="package" component={PackageStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.packages, tabBarStyle: { display: getTabBarVisibility(route) } })} />
+            {memberInfo &&
+                <Tab.Screen name="activity" component={ActivityStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.activityrtext, tabBarStyle: { display: getTabBarVisibility(route) } })} />
+            }
+            <Tab.Screen name="explore" component={ExploreStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.explore, tabBarStyle: { display: getTabBarVisibility(route) } })} />
+            {!memberInfo &&
+                <Tab.Screen name="Support" component={SupportStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.support, tabBarStyle: { display: getTabBarVisibility(route) } })} />
+            }
+            {!memberInfo &&
+                <Tab.Screen name="login" component={AuthStackScreen} options={({ route }) => ({ headerShown: false, title: languageConfig.loginbtn, tabBarStyle: { display: getTabBarVisibility(route) } })} />
+            }
+            {memberInfo &&
+                <Tab.Screen name="profile" component={Profile} options={({ route }) => ({ headerShown: false, title: languageConfig.profile, tabBarStyle: { display: getTabBarVisibility(route) } })} />
+            }
         </Tab.Navigator>
     )
 
@@ -284,6 +428,13 @@ const getTabBarVisibility = (route) => {
     } else if (routeName == SCREEN.PAKAGEBOOKINGSCREEN) {
         return "none";
     } else if (routeName == SCREEN.BOOKINFCONFIRMSCREEN) {
+        return "none";
+    } else if (route.name == "login") {
+        return 'none';
+    } else if (routeName == SCREEN.VIEWIMAGE) {
+        return "none";
+    }
+    else if (routeName == SCREEN.LOCATIONLIST) {
         return "none";
     }
 }
