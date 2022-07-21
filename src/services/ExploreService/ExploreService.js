@@ -1,11 +1,61 @@
 import Axios from '../../helpers/appConfig';
 
-export const ExpoloreFilterService = () => {
+export const getInternationalListService = () => {
     const body =
     {
-        "search": [
-            { "searchfield": "formid", "searchvalue": "621c7241c908ab0b20515f5c", "criteria": "eq", "datatype": "ObjectId" },
-            { "searchfield": "status", "searchvalue": "active", "criteria": "eq" }, { "formname": "explore" }]
+        "search":
+            [{
+                "searchfield": "status",
+                "searchvalue": "active",
+                "criteria": "eq",
+                "datatype": "text"
+            },
+            {
+                "searchfield": "property.international",
+                "searchvalue": "Yes",
+                "criteria": "eq",
+                "datatype": "text"
+            }], "formname": "resortlocation"
     }
-    return Axios.post('formdatas/filter', body)
+
+    return Axios.post('resortlocations/filter', body)
+
+}
+
+export const getDomesticListService = () => {
+    const body =
+    {
+        "search":
+            [{
+                "searchfield": "status",
+                "searchvalue": "active",
+                "criteria": "eq",
+                "datatype": "text"
+            },
+            {
+                "searchfield": "property.international",
+                "searchvalue": "No",
+                "criteria": "eq",
+                "datatype": "text"
+            }], "formname": "resortlocation"
+    }
+
+    return Axios.post('resortlocations/filter', body)
+}
+
+export const topDomesticListService = () => {
+    const body =
+    {
+        "search":
+            [{
+                "searchfield": "status",
+                "searchvalue": "active",
+                "criteria": "eq",
+                "datatype": "text"
+            }
+            ], "formname": "resortlocation",
+        "size": "6"
+    }
+
+    return Axios.post('resortlocations/filter', body)
 }

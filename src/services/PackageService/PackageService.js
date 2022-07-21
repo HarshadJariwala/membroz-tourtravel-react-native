@@ -11,3 +11,19 @@ export const getPackageService = (id) => {
     }
     return Axios.post('memberships/filter', body);
 }
+
+
+export const topTourPackagesListService = () => {
+    const body = {
+        "search":
+            [{
+                "searchfield": "status",
+                "searchvalue": "active",
+                "criteria": "eq",
+                "datatype": "text"
+            }
+            ], "formname": "tourpackage",
+        "size": "5"
+    }
+    return Axios.post('tourpackages/filter', body);
+}

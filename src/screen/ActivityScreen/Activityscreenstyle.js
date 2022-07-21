@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     mainstyle: {
         backgroundColor: COLOR.WHITE,
         width: WIDTH - 30,
-        height: 250,
         shadowColor: COLOR.BLACK,
         shadowOffset: {
             width: 0,
@@ -87,6 +86,12 @@ const styles = StyleSheet.create({
         height: 200,
         borderTopRightRadius: 10,
         borderTopLeftRadius: 10
+    },
+    text: {
+        fontSize: FONT.FONT_SIZE_20,
+        fontFamily: FONT.FONT_BOLD,
+        fontWeight: FONT.FONT_WEIGHT_MEDIAM,
+        color: COLOR.BLACK
     },
 
 })

@@ -1,3 +1,4 @@
+export const AUTH = "Auth";
 export const TABNAVIGATION = 'TabNavigation';
 export const SPLASHSCREEN = "SplashScreen";
 export const LOGINSCREEN = "Loginscreen";
@@ -11,4 +12,6 @@ export const AVTIVITTOURDETAILS = "Avtivittourdetails";
 export const PAKAGEBOOKINGSCREEN = "PakageBookingScreen";
 export const PACKAGEPRICEDETAILS = "PackagePriceDetails";
 export const PAYMENTMODESCREEN = "paymentmodeScreen";
-export const BOOKINFCONFIRMSCREEN = "Bookinfconfirmscreen"
+export const BOOKINFCONFIRMSCREEN = "Bookinfconfirmscreen";
+export const MAINMENUSCREEN = "MainMenuScreen";
+export const MYPROFILESCREEN = "MyProfileScreen";

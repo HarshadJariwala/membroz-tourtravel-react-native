@@ -6,6 +6,12 @@ const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
+    text: {
+        fontSize: FONT.FONT_SIZE_20,
+        fontFamily: FONT.FONT_BOLD,
+        fontWeight: FONT.FONT_WEIGHT_MEDIAM,
+        color: COLOR.BLACK
+    },
     listTab: {
         marginTop: 0,
         borderRadius: 100,
@@ -46,7 +52,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLOR.WHITE,
         // borderWidth: 1, borderColor: COLOR.BLACK,
         width: WIDTH / 2 - 30,
-        height: 220,
+        // height: 220,
         shadowColor: COLOR.BLACK,
         shadowOffset: {
             width: 0,
@@ -58,7 +64,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 10,
         marginTop: 10,
-        margin: 10
+        margin: 10,
     },
     imagecardstyle: {
         margin: 5

@@ -19,6 +19,8 @@ import PAKAGEBOOKINGSCREEN from '../screen/TourPackage/PakageBookingScreen';
 import PACKAGEPRICEDETAILS from '../screen/TourPackage/PackagePriceDetails';
 import PAYMENTMODESCREEN from '../screen/TourPackage/paymentmodeScreen';
 import BOOKINFCONFIRMSCREEN from '../screen/TourPackage/Bookinfconfirmscreen';
+import MAINMENUSCREEN from '../screen/MainMenuScreen/MainMenuScreen';
+import MYPROFILESCREEN from '../screen/MyProfileScreen/MyProfileScreen';
 
 import languageConfig from '../languages/languageConfig';
 import * as SCREEN from '../context/screen/screenName';
@@ -72,6 +74,10 @@ const HomeStackScreen = () => {
                 component={PAKAGEBOOKINGSCREEN}
                 options={{ headerShown: false }}
             />
+            <Stack.Screen
+                name="MainMenuScreen"
+                component={MAINMENUSCREEN}
+                options={{ headerShown: false }} />
             <Stack.Screen
                 name="ActivityScreen"
                 component={ACTIVITYSCREEN}
@@ -276,6 +282,8 @@ const getTabBarVisibility = (route) => {
     } else if (routeName == SCREEN.PAYMENTMODESCREEN) {
         return 'none';
     } else if (routeName == SCREEN.PAKAGEBOOKINGSCREEN) {
+        return "none";
+    } else if (routeName == SCREEN.BOOKINFCONFIRMSCREEN) {
         return "none";
     }
 }

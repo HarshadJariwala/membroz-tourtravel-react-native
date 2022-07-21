@@ -9,7 +9,6 @@ const WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
     maincard: {
         width: WIDTH - 0,
-        // borderRadius: 5,
         flexDirection: KEY.COLUMN,
         backgroundColor: COLOR.WHITE,
         shadowColor: COLOR.BLACK,
@@ -29,7 +28,8 @@ const styles = StyleSheet.create({
         fontFamily: FONT.FONT_BOLD,
         fontWeight: FONT.FONT_WEIGHT_MEDIAM,
         color: COLOR.BLACK,
-        marginBottom: 5
+        marginBottom: 5,
+        marginLeft: 5
     },
     blackcard: {
         width: WIDTH,
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
         fontFamily: FONT.FONT_BOLD,
         fontWeight: FONT.FONT_WEIGHT_MEDIAM,
         color: COLOR.BLACK,
-        marginBottom: 5
+        marginBottom: 5,
+        marginLeft: 5
     },
     photogallerystyle: {
         width: WIDTH / 2 - 30,
@@ -67,7 +68,26 @@ const styles = StyleSheet.create({
         color: COLOR.BLACK,
         fontFamily: FONT.FONT_BOLD,
         fontWeight: FONT.FONT_WEIGHT_MEDIAM
-    }
+    },
+    descripationText: {
+        marginLeft: 15,
+        marginTop: 10,
+        textAlign: KEY.CENTER,
+        alignSelf: KEY.CENTER,
+        fontSize: FONT.FONT_SIZE_16,
+        fontFamily: FONT.FONT_NORMAL,
+        fontWeight: FONT.FONT_WEIGHT_REGULAR,
+        color: COLOR.BLACK,
+        width: WIDTH - 10,
+        marginBottom: 10,
+    },
+    tagsStyles: {
+        fontSize: FONT.FONT_SIZE_16,
+        fontFamily: FONT.FONT_NORMAL,
+        fontWeight: FONT.FONT_WEIGHT_REGULAR,
+        color: COLOR.BLACK,
+        width: WIDTH - 10
+    },
 })
 
 export default styles;

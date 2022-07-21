@@ -6,6 +6,12 @@ const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
+    text1: {
+        fontSize: FONT.FONT_SIZE_20,
+        fontFamily: FONT.FONT_BOLD,
+        fontWeight: FONT.FONT_WEIGHT_MEDIAM,
+        color: COLOR.BLACK
+    },
     changetext: {
         fontSize: FONT.FONT_SIZE_18,
         color: COLOR.DEFALUTCOLOR

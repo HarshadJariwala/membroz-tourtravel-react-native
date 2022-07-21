@@ -1,4 +1,4 @@
-// import BELL_ICON from '../../src/assets/images/icons/bell_icon.png';
+import BELL_ICON from '../../src/assets/images/icons/bell_icon.png';
 // import NO_PHOTO from '../../src/assets/images/icons/noimage.jpg';
 import BACKGROUND_IMAGE from '../../src/assets/images/background.png';
 import MEMBROZ_LOGO from '../../src/assets/images/membroz_logo.png';
@@ -58,7 +58,7 @@ import ACTIVITYICON from '../../src/assets/images/activityicon.png';
 import PROFILEICON from '../../src/assets/images/profileicon.png';
 
 export {
-    BACKGROUND_IMAGE, MEMBROZ_LOGO, USERPROFILE, INVITEICON,
+    BACKGROUND_IMAGE, MEMBROZ_LOGO, USERPROFILE, INVITEICON, BELL_ICON,
     NODATA, MONEYICON, WALLET, REWARDPOINT, ATTENDANCE, USERICON, MEMBERSHIPICON,
     PREFERENCE, OFFERS, TERMS, CONTACT, INVITEEARN, TIMEICON, RIGHTSIDE, LEFTSIDE,
     ASSESSMENTICON, TRAININGICON, HOMEICON, MENUICON, MYBOOKINGICON,

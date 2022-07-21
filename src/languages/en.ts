@@ -552,6 +552,7 @@ export default {
     //submit query
     HeppytoText: "Happy to",
     helptext: "Help you",
+    category: "Category",
     SelectCategoryText: "Select Category",
     subjecttext: "Subject",
     contactnumberText: "Contact Number",
@@ -612,6 +613,13 @@ export default {
     AddCarttext: "Add Cart",
     SuggestedItemtext: "Suggested Item",
     Serachtext: "Serach",
+    itemisnotavailble: " Item Is Not Available",
 
-    itemisnotavailble: " Item Is Not Available"
+    //Activity Text
+    themetext: "Theme and Water Parks",
+
+    TravelbyLocation: "Travel by Location",
+    Podestination: "Popular Destination Pacakages",
+    PopularActivitesText: "Popular Activites",
+
 }

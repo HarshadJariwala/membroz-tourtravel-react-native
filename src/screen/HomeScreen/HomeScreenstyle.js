@@ -7,9 +7,7 @@ const WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     categorymaincard: {
-        // justifyContent: KEY.CENTER,
-        // alignItems: KEY.CENTER,
-        width: 130,
+        width: WIDTH / 2 - 30,
         height: 50,
         shadowColor: COLOR.BLACK,
         shadowOffset: {
@@ -18,7 +16,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.23,
         shadowRadius: 2.62,
-        elevation: 3,
+        elevation: 1,
         borderRadius: 10,
         marginHorizontal: 5,
         marginTop: 5,
@@ -28,10 +26,14 @@ const styles = StyleSheet.create({
         width: 38,
         height: 38,
         borderRadius: 5,
-
+    },
+    text1: {
+        fontSize: FONT.FONT_SIZE_20,
+        fontFamily: FONT.FONT_BOLD,
+        fontWeight: FONT.FONT_WEIGHT_MEDIAM,
+        color: COLOR.BLACK
     },
     image: {
-        // borderRadius: 10,
         width: WIDTH,
         height: 200
     },
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
         fontSize: FONT.FONT_SIZE_16,
         fontFamily: FONT.FONT_BOLD,
         fontWeight: FONT.FONT_WEIGHT_MEDIAM,
-        color: COLOR.BLACK
+        color: COLOR.BLACK,
     },
     viewalltext: {
         color: COLOR.DEFALUTCOLOR,
@@ -87,7 +89,6 @@ const styles = StyleSheet.create({
     },
     mainstyle: {
         backgroundColor: COLOR.WHITE,
-        // borderWidth: 1, borderColor: COLOR.BLACK,
         width: WIDTH / 2 - 40,
         height: 220,
         shadowColor: COLOR.BLACK,
@@ -105,9 +106,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10
     },
-    imagecardstyle: {
-
-    },
     imagestyle1: {
         width: WIDTH / 2 - 40,
         height: 120,
@@ -122,7 +120,6 @@ const styles = StyleSheet.create({
     },
     mainstyle1: {
         backgroundColor: COLOR.WHITE,
-        // borderWidth: 1, borderColor: COLOR.BLACK,
         width: WIDTH - 100,
         height: 180,
         shadowColor: COLOR.BLACK,
@@ -140,9 +137,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10
     },
-
-
-
 })
 
 export default styles;

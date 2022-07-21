@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 20,
         borderBottomRightRadius: 20,
         justifyContent: KEY.CENTER,
-        alignItems: KEY.CENTER
+        alignItems: KEY.CENTER,
+        marginBottom: 10
     },
     buttontext: {
         color: COLOR.WHITE,

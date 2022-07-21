@@ -51,6 +51,27 @@ const styles = StyleSheet.create({
         justifyContent: KEY.CENTER,
         alignItems: KEY.CENTER
     },
+    descripationText: {
+        marginLeft: 15,
+        marginTop: 10,
+        textAlign: KEY.CENTER,
+        alignSelf: KEY.CENTER,
+        fontSize: FONT.FONT_SIZE_16,
+        fontFamily: FONT.FONT_NORMAL,
+        fontWeight: FONT.FONT_WEIGHT_REGULAR,
+        color: COLOR.BLACK,
+        width: WIDTH - 20,
+        marginBottom: 10,
+
+    },
+    tagsStyles: {
+        //textAlign: KEY.CENTER,
+        fontSize: FONT.FONT_SIZE_16,
+        fontFamily: FONT.FONT_NORMAL,
+        fontWeight: FONT.FONT_WEIGHT_REGULAR,
+        color: COLOR.BLACK,
+        width: WIDTH - 20
+    },
 })
 
 export default styles;
