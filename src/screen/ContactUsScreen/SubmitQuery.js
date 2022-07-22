@@ -10,9 +10,9 @@ import * as LocalService from '../../services/LocalService/LocalService';
 import { CLOUD_URL, UPLOAD_PRESET } from '../../context/actions/type';
 import MyPermissionController from '../../helpers/appPermission';
 import languageConfig from '../../languages/languageConfig';
+import * as SCREEN from '../../context/screen/screenName';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SelectDropdown from 'react-native-select-dropdown';
-import * as SCREEN from '../../context/screen/screenName';
 import * as ImagePicker from "react-native-image-picker";
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -338,14 +338,17 @@ const SubmitQuery = (props) => {
             }
             <View style={{ marginLeft: 15, marginRight: 15, marginTop: 5, justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, alignItems: KEY.CENTER }}>
                 <View>
-                    <TouchableOpacity onPress={() => onPressTocontactus()}>
+                    <TouchableOpacity onPress={() => props.navigation.goBack(null)}>
                         <Feather name='arrow-left' size={24} color={COLOR.BLACK} />
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.text}>{languageConfig.submitquery}</Text>
                 <View>
-                    <TouchableOpacity onPress={() => onPressTomycart()}>
-                        <Image source={IMAGE.BAG} style={{ width: 25, height: 25 }} />
+                    <View style={{ marginBottom: 10, width: 16, height: 16, backgroundColor: COLOR.DEFALUTCOLOR, borderRadius: 100, justifyContent: KEY.CENTER, alignItems: KEY.CENTER, position: KEY.ABSOLUTE, bottom: 5, left: 15 }}>
+                        <Text style={{ color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontSize: FONT.FONT_SIZE_10 }}>{'0'}</Text>
+                    </View>
+                    <TouchableOpacity onPress={() => props.navigation.navigate(SCREEN.NOTIFICATIONSCREEN)}>
+                        <Ionicons name='notifications-outline' size={28} color={COLOR.BLACK} />
                     </TouchableOpacity>
                 </View>
             </View>

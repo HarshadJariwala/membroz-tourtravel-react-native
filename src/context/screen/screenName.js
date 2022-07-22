@@ -19,3 +19,5 @@ export const PASSWORDCHANGESCREEN = "PasswordChangeScreen";
 export const UPDATEPROFILESCREEN = "UpdateProfileScreen";
 export const LOCATIONLIST = "LocationList";
 export const VIEWIMAGE = "ViewImage";
+export const SUBMITQUERY = "SubmitQuery";
+export const NOTIFICATIONSCREEN = "NotificationScreen";

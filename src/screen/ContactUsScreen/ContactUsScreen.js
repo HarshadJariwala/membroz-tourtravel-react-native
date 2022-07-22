@@ -74,7 +74,6 @@ const ContactUsScreen = (props) => {
     //GET MEMBER DATA IN MOBILE LOCAL STORAGE
     const getMemberDeatilsLocalStorage = async () => {
         var customerInfo = await LocalService.LocalStorageService();
-        await getMyCartList();
         if (customerInfo) {
             setCustomerInfo(customerInfo);
         }
@@ -113,37 +112,28 @@ const ContactUsScreen = (props) => {
         }
     }
 
-    const onPressTomycart = () => {
-        props.navigation.navigate(SCREEN.MYCARTSCREEN);
-    }
 
-    //GET LOCAL CART LIST
-    const getMyCartList = async () => {
-        const cartCounter = await LocalAddTOcart.getLocaladdtocardlist();
-        if (cartCounter && cartCounter.length > 0) {
-            setCartCounter(cartCounter.length);
-        } else {
-            setCartCounter(0);
-        }
-    }
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.BACKGROUNDCOLOR }}>
             <StatusBar hidden={false} translucent={false} backgroundColor={COLOR.STATUSBARCOLOR} barStyle={KEY.DARK_CONTENT} />
-            <View style={{ marginLeft: 15, marginRight: 15, marginTop: 5, marginBottom: 20, justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, alignItems: KEY.CENTER }}>
+            <View style={{ marginLeft: 15, marginRight: 15, marginTop: 5, marginBottom: 10, justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, alignItems: KEY.CENTER }}>
                 <View>
                     <TouchableOpacity onPress={() => onPressTomainmenu()}>
                         <Image source={IMAGE.MENUICON} style={{ width: 27, height: 18 }} />
                     </TouchableOpacity>
                 </View>
-                <Text style={styles.text}>{languageConfig.contactustext}</Text>
+                <Text style={{
+                    fontSize: FONT.FONT_SIZE_20,
+                    fontFamily: FONT.FONT_BOLD,
+                    fontWeight: FONT.FONT_WEIGHT_MEDIAM,
+                    color: COLOR.BLACK
+                }}>{languageConfig.contactustext}</Text>
                 <View>
                     <View style={{ marginBottom: 10, width: 16, height: 16, backgroundColor: COLOR.DEFALUTCOLOR, borderRadius: 100, justifyContent: KEY.CENTER, alignItems: KEY.CENTER, position: KEY.ABSOLUTE, bottom: 5, left: 15 }}>
-                        <Text style={{
-                            color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontSize: FONT.FONT_SIZE_10
-                        }}>{cartCounter}</Text>
+                        <Text style={{ color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontSize: FONT.FONT_SIZE_10 }}>{'0'}</Text>
                     </View>
-                    <TouchableOpacity onPress={() => onPressTomycart()}>
-                        <Image source={IMAGE.BAG} style={{ width: 25, height: 25 }} />
+                    <TouchableOpacity onPress={() => props.navigation.navigate(SCREEN.NOTIFICATIONSCREEN)}>
+                        <Ionicons name='notifications-outline' size={28} color={COLOR.BLACK} />
                     </TouchableOpacity>
                 </View>
             </View>

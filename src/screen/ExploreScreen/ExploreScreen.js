@@ -13,6 +13,7 @@ import { MemberLanguage } from '../../services/LocalService/LanguageService';
 import { firebase } from "@react-native-firebase/crashlytics";
 import * as LocalService from '../../services/LocalService/LocalService';
 import axiosConfig from "../../helpers/axiosConfig";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
@@ -28,7 +29,7 @@ const ListTab = [
 
 const ExploreScreen = (props) => {
     const [logo, setLogo] = useState(null);
-    const [loading, setloading] = useState(true)
+    const [loading, setloading] = useState(true);
     const [status, setStatus] = useState("Domestic");
     const [domesticList, setDomesticList] = useState([]);
     const [internationList, setInternationList] = useState([]);
@@ -97,8 +98,6 @@ const ExploreScreen = (props) => {
         var memberInfo = await LocalService.LocalStorageService();
         if (memberInfo) {
             setCustomerInfo(memberInfo);
-            getmemberid = memberInfo?._id;
-            console.log("getmemberid", getmemberid)
             getinternationList();
             getDomesticList();
         } else {
@@ -112,12 +111,9 @@ const ExploreScreen = (props) => {
         try {
             const response = await getInternationalListService();
             if (response.data != null && response.data != 'undefind' && response.status == 200) {
-                console.log("response data", response)
                 setInternationList(response.data);
-                setloading(false);
             }
         } catch (error) {
-            console.log("error", error)
             firebase.crashlytics().recordError(error);
             setloading(false);
         }
@@ -127,12 +123,10 @@ const ExploreScreen = (props) => {
         try {
             const response = await getDomesticListService();
             if (response.data != null && response.data != 'undefind' && response.status == 200) {
-                console.log("response data 1", response)
                 setDomesticList(response.data);
                 setloading(false);
             }
         } catch (error) {
-            console.log("error", error)
             firebase.crashlytics().recordError(error);
             setloading(false);
         }
@@ -181,97 +175,106 @@ const ExploreScreen = (props) => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.BACKGROUNDCOLOR }}>
             <StatusBar hidden={false} translucent={false} backgroundColor={COLOR.STATUSBARCOLOR} barStyle={Platform.OS === 'ios' ? KEY.DARK_CONTENT : KEY.DARK_CONTENT} />
-            <View style={{ marginLeft: 15, marginRight: 15, marginTop: 15, marginBottom: 5, justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, alignItems: KEY.CENTER }}>
+            <View style={{ marginLeft: 15, marginRight: 15, marginTop: 5, marginBottom: 10, justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, alignItems: KEY.CENTER }}>
                 <View>
                     <TouchableOpacity onPress={() => onPressTomainmenu()}>
                         <Image source={IMAGE.MENUICON} style={{ width: 27, height: 18 }} />
                     </TouchableOpacity>
                 </View>
-                <Text style={styles.text}>{languageConfig.explore}</Text>
+                <Text style={{
+                    fontSize: FONT.FONT_SIZE_20,
+                    fontFamily: FONT.FONT_BOLD,
+                    fontWeight: FONT.FONT_WEIGHT_MEDIAM,
+                    color: COLOR.BLACK
+                }}>{languageConfig.explore}</Text>
                 <View>
-                    <TouchableOpacity>
-                        <Image source={IMAGE.BELL_ICON} style={{ width: 22, height: 27, tintColor: COLOR.BLACK }} />
+                    <View style={{ marginBottom: 10, width: 16, height: 16, backgroundColor: COLOR.DEFALUTCOLOR, borderRadius: 100, justifyContent: KEY.CENTER, alignItems: KEY.CENTER, position: KEY.ABSOLUTE, bottom: 5, left: 15 }}>
+                        <Text style={{ color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontSize: FONT.FONT_SIZE_10 }}>{'0'}</Text>
+                    </View>
+                    <TouchableOpacity onPress={() => props.navigation.navigate(SCREEN.NOTIFICATIONSCREEN)}>
+                        <Ionicons name='notifications-outline' size={28} color={COLOR.BLACK} />
                     </TouchableOpacity>
                 </View>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={KEY.ALWAYS}>
-                {("Domestic" && "Domestic".length > 0) || (domesticList && domesticList.length > 0)
-                    ?
+
+            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={KEY.ALWAYS}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        title={languageConfig.pullrefreshtext}
+                        tintColor={COLOR.DEFALUTCOLOR}
+                        titleColor={COLOR.DEFALUTCOLOR}
+                        colors={[COLOR.DEFALUTCOLOR]}
+                        onRefresh={onRefresh} />
+                }>
+                <View style={styles.listTab}>
+                    {
+                        ListTab.map((e, index) => (
+                            <TouchableOpacity style={[styles.btnTab, status === e.status && styles.tabActive]}
+                                onPress={() => setStatusFilter(e.status, index)}>
+                                <Text style={[styles.tabText, status === e.status && styles.tabTextActive]}>
+                                    {e.status}
+                                </Text>
+                            </TouchableOpacity>
+                        ))
+                    }
+                </View>
+                {
+                    status == "Domestic" &&
                     <>
-                        <View style={styles.listTab}>
-                            {
-                                ListTab.map((e, index) => (
-                                    <TouchableOpacity style={[styles.btnTab, status === e.status && styles.tabActive]} onPress={() => setStatusFilter(e.status, index)}>
-                                        <Text style={[styles.tabText, status === e.status && styles.tabTextActive]}>
-                                            {e.status}
-                                        </Text>
-                                    </TouchableOpacity>
-                                ))
-                            }
-                        </View>
-                        {
-                            status == "Domestic" &&
-                            <>
-                                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
-                                    <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
-                                        <FlatList
-                                            showsHorizontalScrollIndicator={false}
-                                            data={domesticList}
-                                            numColumns={2}
-                                            renderItem={DomesticlList}
-                                            keyExtractor={item => item._id}
-                                            style={{ flexDirection: KEY.COLUMN, }}
-                                            keyboardShouldPersistTaps={KEY.ALWAYS}
-                                            ListFooterComponent={() => (
-                                                internationList && internationList.length == 0 &&
-                                                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
-                                                    <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
-                                                    <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
-                                                </View>
-                                            )}
-                                        />
-                                    </View>
-                                </View>
-
-                            </>
-                        }
-                        {
-                            status == "International" &&
-                            <>
-
-                                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, }}>
-                                    <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
-                                        <FlatList
-                                            showsHorizontalScrollIndicator={false}
-                                            data={internationList}
-                                            numColumns={2}
-                                            renderItem={InternationalList}
-                                            keyExtractor={item => item._id}
-                                            style={{ flexDirection: KEY.ROW, }}
-                                            keyboardShouldPersistTaps={KEY.ALWAYS}
-                                            ListFooterComponent={() => (
-                                                internationList && internationList.length == 0 &&
-                                                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
-                                                    <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
-                                                    <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
-                                                </View>
-                                            )}
-                                        />
-                                    </View>
-                                </View>
-                            </>
-
-                        }
-                    </>
-                    :
-                    loading == false ?
                         <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
-                            <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
-                            <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
+                            <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
+                                <FlatList
+                                    showsHorizontalScrollIndicator={false}
+                                    data={domesticList}
+                                    numColumns={2}
+                                    renderItem={DomesticlList}
+                                    keyExtractor={item => item._id}
+                                    style={{ flexDirection: KEY.COLUMN, }}
+                                    keyboardShouldPersistTaps={KEY.ALWAYS}
+                                    ListFooterComponent={() => (
+                                        internationList && internationList.length == 0 &&
+                                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
+                                            <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
+                                            <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
+                                        </View>
+                                    )}
+                                />
+                            </View>
                         </View>
-                        : <Loader />
+
+                    </>
+                }
+
+                {
+                    status == "International" &&
+                    <>
+
+                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, }}>
+                            <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
+                                <FlatList
+                                    showsHorizontalScrollIndicator={false}
+                                    data={internationList}
+                                    numColumns={2}
+                                    renderItem={InternationalList}
+                                    keyExtractor={item => item._id}
+                                    style={{ flexDirection: KEY.ROW, }}
+                                    keyboardShouldPersistTaps={KEY.ALWAYS}
+                                    ListFooterComponent={() => (
+                                        internationList && internationList.length == 0 &&
+                                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
+                                            <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
+                                            <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
+                                        </View>
+                                    )}
+                                />
+                            </View>
+                        </View>
+                    </>
+
                 }
             </ScrollView>
+            {loading ? <Loader /> : null}
         </SafeAreaView>
     )
 }

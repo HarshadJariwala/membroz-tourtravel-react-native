@@ -19,7 +19,7 @@ export default function ViewImage(props) {
     const viewimage = props.route.params.viewimage;
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.BLACK }}>
-            <StatusBar hidden={false} translucent={true} backgroundColor={COLOR.BLACK} barStyle={KEY.LIGHT_CONTENT} />
+            <StatusBar hidden={false} translucent={false} backgroundColor={COLOR.BLACK} barStyle={KEY.LIGHT_CONTENT} />
 
             <View style={{
                 flex: 1,

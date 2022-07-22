@@ -5,7 +5,6 @@ import { NavigationContainer, TabRouter } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
-
 import LOGINSCREEN from "../screen/LoginScreen/LoginScreen";
 import SPLASHSCREEN from "../screen/SplashScreen/SplashScreen";
 import REGISTERSCREEN from '../screen/RegisterScreen/RegisterScreen';
@@ -30,6 +29,7 @@ import NEWPASSWORDSCREEN from "../screen/ForgetPasswordScreen/NewPasswordScreen"
 import OTPSCREEN from "../screen/LoginScreen/Otpscreen";
 import LOCATIONLIST from "../screen/ExploreScreen/LocationList";
 import VIEWIMAGE from "../screen/ExploreScreen/ViewImage";
+import NOTIFICATIONSCREEN from "../screen/NotificationScreen/NotificationScreen";
 
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import languageConfig from '../languages/languageConfig';
@@ -81,6 +81,11 @@ const HomeStackScreen = () => {
             <Stack.Screen
                 name="HomeScreen"
                 component={HOMESCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="NotificationScreen"
+                component={NOTIFICATIONSCREEN}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
@@ -193,6 +198,11 @@ const PackageStackScreen = () => {
         <Stack.Navigator initialRouteName="TourPakageScreen"
             screenOptions={{ headerShadowVisible: false }}>
             <Stack.Screen
+                name="NotificationScreen"
+                component={NOTIFICATIONSCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
                 name="TourPakageScreen"
                 component={TOURPAKAGESCREEN}
                 options={{ headerShown: false }}
@@ -232,6 +242,11 @@ const ActivityStackScreen = () => {
         <Stack.Navigator initialRouteName="ActivityScreen"
             screenOptions={{ headerShadowVisible: false }}>
             <Stack.Screen
+                name="NotificationScreen"
+                component={NOTIFICATIONSCREEN}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
                 name="ActivityScreen"
                 component={ACTIVITYSCREEN}
                 options={{ headerShown: false }}
@@ -245,11 +260,16 @@ const ActivityStackScreen = () => {
         </Stack.Navigator>
     )
 }
+
 const ExploreStackScreen = () => {
     return (
         <Stack.Navigator initialRouteName="MyProfileScreen"
             screenOptions={{ headerShadowVisible: false }}>
-
+            <Stack.Screen
+                name="NotificationScreen"
+                component={NOTIFICATIONSCREEN}
+                options={{ headerShown: false }}
+            />
             <Stack.Screen
                 name="ExploreScreen"
                 component={EXPLORESCREEN}
@@ -271,6 +291,11 @@ const Profile = () => {
     return (
         <Stack.Navigator initialRouteName="MyProfileScreen"
             screenOptions={{ headerShadowVisible: false }}>
+            <Stack.Screen
+                name="NotificationScreen"
+                component={NOTIFICATIONSCREEN}
+                options={{ headerShown: false }}
+            />
             <Stack.Screen
                 name="MyProfileScreen"
                 component={MYPROFILESCREEN}
@@ -295,6 +320,11 @@ const SupportStackScreen = ({ navigation }) => {
     return (
         <Stack.Navigator initialRouteName='ContactUsScreen'
             screenOptions={{ headerShadowVisible: false }}>
+            <Stack.Screen
+                name="NotificationScreen"
+                component={NOTIFICATIONSCREEN}
+                options={{ headerShown: false }}
+            />
             <Stack.Screen
                 name="ContactUsScreen"
                 component={CONTACTUSSCREEN}
