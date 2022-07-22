@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, Dimensions, SafeAreaView, Image, StatusBar, ScrollView, Platform, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, Dimensions, SafeAreaView, Image, StatusBar, RefreshControl, ScrollView, Platform, TouchableOpacity } from "react-native";
 import * as KEY from '../../context/actions/key';
 import languageConfig from "../../languages/languageConfig";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { topTourCategoryListService } from '../../services/CategoryService/CategoryService';
-import { topTourPackagesListService } from "../../services/PackageService/PackageService";
+import { CategoryListService } from '../../services/CategoryService/CategoryService';
+import { getPackageService } from "../../services/PackageService/PackageService";
 import { MemberLanguage } from '../../services/LocalService/LanguageService';
 import * as LocalService from '../../services/LocalService/LocalService';
 import axiosConfig from "../../helpers/axiosConfig";
 import { firebase } from "@react-native-firebase/crashlytics";
+import Loader from "../../components/loader/index";
 import * as FONT from '../../styles/typography';
 import * as SCREEN from "../../context/screen/screenName";
 import * as COLOR from '../../styles/colors';
@@ -54,13 +55,10 @@ const TourPakageScreen = (props) => {
         });
     }
 
-    //ON PRESS MAIN MENU
-    const onPressTomainmenu = () => {
-        if (customerInfo) {
-            props.navigation.navigate(SCREEN.MAINMENUSCREEN);
-        } else {
-            props.navigation.navigate(SCREEN.AUTH);
-        }
+    //GET PULL TO REFRESH FUNCTION
+    const onRefresh = () => {
+        setrefreshing(true);
+        wait(3000).then(() => setrefreshing(false));
     }
 
     //GET MEMBER DATA IN MOBILE LOCAL STORAGE
@@ -69,20 +67,19 @@ const TourPakageScreen = (props) => {
         if (memberInfo) {
             setCustomerInfo(memberInfo);
             getmemberid = memberInfo?._id;
-            getCategoryList();
+            getCategoryList()
             getpacakgeList();
         } else {
-            getCategoryList();
+            getCategoryList()
             getpacakgeList();
         }
     }
 
     //ACTIVITY LIST FETCH DATA THROUGHT API
-    const getpacakgeList = async () => {
+    const getpacakgeList = async (id) => {
         try {
-            const response = await topTourPackagesListService();
+            const response = await getPackageService(id);
             if (response.data != null && response.data != 'undefind' && response.status == 200) {
-                console.log("pacakage", response);
                 setPacakageList(response.data);
                 setloading(false);
             }
@@ -92,10 +89,11 @@ const TourPakageScreen = (props) => {
             setloading(false);
         }
     }
+
     //ACTIVITY LIST FETCH DATA THROUGHT API
     const getCategoryList = async () => {
         try {
-            const response = await topTourCategoryListService();
+            const response = await CategoryListService();
             if (response.data != null && response.data != 'undefind' && response.status == 200) {
                 setCategoryList(response.data);
                 setloading(false);
@@ -108,16 +106,17 @@ const TourPakageScreen = (props) => {
     }
 
     //THIS FUNCTION INPRESS CATEGORY LIST ITEM
-    const onPressCategoryListItem = (item) => {
-        // if (item) {
-        //     props.navigation.navigate(SCREEN.TOURPACKAGELISTSCREEN, { item });
-        // }
-        // console.log("item", item)
+    const onPressTomainmenu = () => {
+        if (customerInfo) {
+            props.navigation.navigate(SCREEN.MAINMENUSCREEN);
+        } else {
+            props.navigation.navigate(SCREEN.AUTH);
+        }
     }
 
     //RENDER CATEGORY SERVICE FLATLIST
     const CatogoryList = ({ item, index }) => (
-        <TouchableOpacity style={styles.categorymaincard} onPress={() => onPressCategoryListItem(item)}>
+        <TouchableOpacity style={styles.categorymaincard} onPress={() => getpacakgeList(item._id)}>
             <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, margin: 5, marginLeft: 6 }}>
                 <Image style={styles.cardimagestyle}
                     source={{
@@ -216,13 +215,24 @@ const TourPakageScreen = (props) => {
                                             <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
                                         </View>
                                     )}
+                                    refreshControl={
+                                        <RefreshControl
+                                            refreshing={refreshing}
+                                            title={languageConfig.pullrefreshtext}
+                                            tintColor={COLOR.DEFALUTCOLOR}
+                                            titleColor={COLOR.DEFALUTCOLOR}
+                                            colors={[COLOR.DEFALUTCOLOR]}
+                                            onRefresh={onRefresh} />
+                                    }
                                 />
+
                             </View>
                         </ScrollView>
 
                     </View>
                 </ScrollView>
             </ScrollView>
+            {loading ? <Loader /> : null}
         </SafeAreaView >
     )
 }

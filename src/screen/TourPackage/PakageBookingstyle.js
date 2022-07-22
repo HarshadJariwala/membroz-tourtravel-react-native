@@ -103,8 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLOR.LIGHT_BLACK,
         justifyContent: KEY.CENTER,
         alignItems: KEY.CENTER,
-        marginTop: WIDTH * 0.4,
-        marginBottom: 10
+        marginTop: "82%"
     },
     continuebutton: {
         width: 150,
@@ -115,7 +114,6 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
         justifyContent: KEY.CENTER,
         alignItems: KEY.CENTER,
-
     },
 })
 export default styles;

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         borderColor: COLOR.DEFALUTCOLOR,
         justifyContent: KEY.CENTER,
         alignItems: KEY.CENTER,
-        marginTop: 25,
+        marginTop: 10,
         marginBottom: 10,
         marginLeft: 10
     },
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 20,
         borderBottomRightRadius: 20,
         justifyContent: KEY.CENTER,
-        alignItems: KEY.CENTER
+        alignItems: KEY.CENTER,
     },
     buttontext: {
         color: COLOR.WHITE,

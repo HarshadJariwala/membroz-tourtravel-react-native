@@ -11,17 +11,9 @@ const styles = StyleSheet.create({
         width: WIDTH - 0,
         flexDirection: KEY.COLUMN,
         backgroundColor: COLOR.WHITE,
-        shadowColor: COLOR.BLACK,
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-        elevation: 3,
         marginTop: 10,
         marginBottom: 10,
-        borderRadius: 10
+
     },
     titletext: {
         fontSize: FONT.FONT_SIZE_18,
@@ -87,6 +79,56 @@ const styles = StyleSheet.create({
         fontWeight: FONT.FONT_WEIGHT_REGULAR,
         color: COLOR.BLACK,
         width: WIDTH - 10
+    },
+    listTab: {
+        marginTop: -10,
+        backgroundColor: COLOR.WHITE,
+        height: 50,
+        shadowColor: COLOR.BLACK,
+        flexDirection: KEY.ROW,
+        justifyContent: KEY.CENTER,
+        alignItems: KEY.CENTER,
+
+    },
+    btnTab: {
+        flexDirection: KEY.ROW,
+        width: WIDTH / 3,
+        padding: 10,
+        justifyContent: KEY.CENTER,
+        borderBottomColor: COLOR.BLACK_OLIVE,
+        borderBottomWidth: 1
+    },
+    tabActive: {
+        width: WIDTH / 3 - 0,
+        borderBottomColor: COLOR.DEFALUTCOLOR,
+        borderBottomWidth: 2,
+    },
+    tabText: {
+        fontSize: FONT.FONT_SIZE_16,
+        fontFamily: FONT.FONT_BOLD,
+        fontWeight: FONT.FONT_WEIGHT_MEDIAM,
+        textTransform: KEY.CAPITALIZE,
+        color: COLOR.LIGHT_BLACK
+    },
+    tabTextActive: {
+        fontSize: FONT.FONT_SIZE_16,
+        fontWeight: FONT.FONT_BOLD,
+        textTransform: KEY.CAPITALIZE,
+        color: COLOR.DEFALUTCOLOR
+
+    },
+    highlighttext: {
+        marginLeft: 20,
+        textAlign: KEY.CENTER,
+        alignSelf: KEY.CENTER,
+        fontSize: FONT.FONT_SIZE_16,
+        fontFamily: FONT.FONT_NORMAL,
+        fontWeight: FONT.FONT_WEIGHT_REGULAR,
+        color: COLOR.BLACK,
+        width: WIDTH - 10,
+        marginBottom: 10,
+        padding: 10,
+        textAlign: 'left'
     },
 })
 

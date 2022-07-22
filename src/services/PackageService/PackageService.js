@@ -1,15 +1,38 @@
 import Axios from '../../helpers/appConfig';
 
-export const getPackageService = (id) => {
-    const body = {
-        "search": [
-            { "searchfield": "status", "searchvalue": "active", "datatype": "text", "criteria": "eq" },
-            { "searchfield": "property.type", "searchvalue": "package", "datatype": "text", "criteria": "eq" },
-            // { "searchfield": "branchid", "searchvalue": id, "datatype": "ObjectId", "criteria": "eq" },
-            // { "searchfield": "property.availablebooking", "searchvalue": "Yes", "criteria": "eq", "datatype": "text" }
-        ], "formname": "package"
+export const getPackageService = (itemid) => {
+    let body
+    if (itemid != null) {
+        body = {
+            "search":
+                [{
+                    "searchfield": "status",
+                    "searchvalue": "active",
+                    "criteria": "eq",
+                    "datatype": "text"
+                },
+                {
+                    "searchfield": "packagetype",
+                    "searchvalue": itemid,
+                    "criteria": "eq",
+                    "datatype": "objectid"
+                }
+                ], "formname": "tourpackage", "size": "5"
+        }
+    } else {
+        const body = {
+            "search":
+                [{
+                    "searchfield": "status",
+                    "searchvalue": "active",
+                    "criteria": "eq",
+                    "datatype": "text"
+                }
+                ], "formname": "tourpackage",
+
+        }
     }
-    return Axios.post('memberships/filter', body);
+    return Axios.post('tourpackages/filter', body);
 }
 
 

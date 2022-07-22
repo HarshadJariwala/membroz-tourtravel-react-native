@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Dimensions, SafeAreaView, Image, StatusBar, ScrollView, Platform, TouchableOpacity } from "react-native";
 import languageConfig from "../../languages/languageConfig";
 import * as SCREEN from "../../context/screen/screenName";
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { MemberLanguage } from '../../services/LocalService/LanguageService';
+import * as LocalService from '../../services/LocalService/LocalService';
 import CalendarStrip from 'react-native-calendar-strip';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
+import getCurrency from '../../services/getCurrencyService/getCurrency';
 import * as KEY from '../../context/actions/key';
 import * as FONT from '../../styles/typography';
 import * as COLOR from '../../styles/colors';
-import * as IMAGE from '../../styles/image';
 import Loader from '../../components/loader/index';
+import axiosConfig from "../../helpers/axiosConfig";
 import styles from "./PakageBookingstyle";
 
 
@@ -19,11 +19,49 @@ const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
 const PakageBookingScreen = (props) => {
+    const PacakageDetailsList = props.route.params === undefined ? null : props.route.params.item;
 
-    const onPresstoPackagepricedetails = async () => {
-        props.navigation.navigate(SCREEN.PACKAGEPRICEDETAILS);
+    const [pacakagedetails, setPacakageDetails] = useState(PacakageDetailsList);
+    const [logo, setLogo] = useState(null);
+    const [customerInfo, setCustomerInfo] = useState(null);
+    const [currencySymbol, setCurrencySymbol] = useState(null);
+    const [loading, setloading] = useState(true);
+
+    const onPresstoPackagepricedetails = async (item) => {
+        item = pacakagedetails;
+        props.navigation.navigate(SCREEN.PACKAGEPRICEDETAILS, { item });
     }
 
+    useEffect(() => {
+        //LANGUAGE MANAGEMENT FUNCTION
+        MemberLanguage();
+        RemoteController();
+        getMemberDeatilsLocalStorage
+    }, []);
+
+    //REMOTE DATA FATCH IN LOCAL STORAGE
+    const RemoteController = async () => {
+        var userData = await LocalService.RemoteServerController();
+        if (userData) {
+            setLogo(userData.applogo);
+        }
+    };
+
+    //GET MEMBER DATA IN MOBILE LOCAL STORAGE
+    const getMemberDeatilsLocalStorage = async () => {
+        var publicAuthkey = await LocalService.LocalBranchDetails();
+        axiosConfig(publicAuthkey._id);
+        console.log("publicAuthkey._id", publicAuthkey._id);
+        const response = getCurrency(publicAuthkey.branchid.currency);
+        setCurrencySymbol(response);
+    }
+
+    const onPresstoPackageBooking = async (item) => {
+        props.navigation.navigate(SCREEN.PAKAGEBOOKINGSCREEN, { item });
+    }
+
+    useEffect(() => {
+    }, [logo, pacakagedetails, loading, customerInfo, currencySymbol]);
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.BACKGROUNDCOLOR }}>
@@ -91,22 +129,25 @@ const PakageBookingScreen = (props) => {
                     <View style={styles.maincard}>
                         <View style={{ flexDirection: KEY.ROW, justifyContent: KEY.SPACEBETWEEN }}>
                             <View style={{ marginLeft: 10, marginTop: 5, marginBottom: 5 }}>
-                                <Text style={{ fontSize: FONT.FONT_SIZE_20, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}> {"Maldives"} </Text>
+                                <Text style={{ fontSize: FONT.FONT_SIZE_20, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}> {pacakagedetails && pacakagedetails && pacakagedetails.title} </Text>
                             </View>
                             <TouchableOpacity style={styles.pricebox}>
-                                <Text style={styles.pricetext}>{"$1900"}</Text>
+                                <Text style={styles.pricetext}>{currencySymbol + (pacakagedetails && pacakagedetails && pacakagedetails.items[0].cost)}</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ marginLeft: 15, marginBottom: 10, flexDirection: KEY.COLUMN }}>
-                            <Text style={{ color: COLOR.DEFALUTCOLOR, fontSize: FONT.FONT_SIZE_16, marginBottom: 5 }}>{"4N/5D"}</Text>
+                            <Text style={{ color: COLOR.DEFALUTCOLOR, fontSize: FONT.FONT_SIZE_16, marginBottom: 5 }}>{pacakagedetails && pacakagedetails && pacakagedetails.duration}</Text>
+                        </View>
+                        {/* <View style={{ marginLeft: 15, marginBottom: 10, flexDirection: KEY.COLUMN }}>
+                            
                             <Text style={{}}>{"Date: "}
                                 <Text style={{ color: COLOR.BLACK, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontFamily: FONT.FONT_BOLD }}>{"Fri, 1 Sep 2022-Mon, 5 Sep 2022"}</Text>
                             </Text>
                             <Text style={{}}>{"Starting from: "}
                                 <Text style={{ color: COLOR.BLACK, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontFamily: FONT.FONT_BOLD }}>{"Surat"}</Text>
                             </Text>
-                        </View>
-                        <View style={{ justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, marginBottom: 10, marginRight: 15 }}>
+                        </View> */}
+                        {/* <View style={{ justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, marginBottom: 10, marginRight: 15 }}>
                             <View style={{ marginLeft: 15, flexDirection: KEY.COLUMN }}>
                                 <Text style={styles.texttitle}>{"Adult"}</Text>
                                 <Text>{"Height above 140 cm"}</Text>
@@ -121,9 +162,9 @@ const PakageBookingScreen = (props) => {
                                 </TouchableOpacity>
                             </View>
                             <Text style={{ fontSize: FONT.FONT_SIZE_14, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"$50"}</Text>
-                        </View>
+                        </View> */}
 
-                        <View style={{ justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, marginBottom: 10, marginRight: 15 }}>
+                        {/* <View style={{ justifyContent: KEY.SPACEBETWEEN, flexDirection: KEY.ROW, marginBottom: 10, marginRight: 15 }}>
                             <View style={{ marginLeft: 15, flexDirection: KEY.COLUMN }}>
                                 <Text style={styles.texttitle}>{"Child"}</Text>
                                 <Text>{"Height 85 cm-140 cm"}</Text>
@@ -138,16 +179,17 @@ const PakageBookingScreen = (props) => {
                                 </TouchableOpacity>
                             </View>
                             <Text style={{ fontSize: FONT.FONT_SIZE_14, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"$1350"}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.blackcard}>
-                        <View style={{ alignSelf: KEY.FLEX_END, marginRight: 10 }}>
-                            <TouchableOpacity style={styles.continuebutton} onPress={() => onPresstoPackagepricedetails()}>
-                                <Text style={{ fontSize: FONT.FONT_SIZE_18, color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"Continue"}</Text>
-                            </TouchableOpacity>
-                        </View>
+                        </View> */}
                     </View>
 
+
+                </View>
+                <View style={styles.blackcard}>
+                    <View style={{ alignSelf: KEY.FLEX_END, marginRight: 10 }}>
+                        <TouchableOpacity style={styles.continuebutton} onPress={() => onPresstoPackagepricedetails()}>
+                            <Text style={{ fontSize: FONT.FONT_SIZE_18, color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"Continue"}</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ScrollView>
         </SafeAreaView>

@@ -19,14 +19,18 @@ const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
 const paymentmodeScreen = (props) => {
+    const PacakageDetailsList = props.route.params === undefined ? null : props.route.params.item;
+    const [pacakagedetails, setPacakageDetails] = useState(PacakageDetailsList);
 
     const onPresstopricedetails = async () => {
         props.navigation.navigate(SCREEN.PACKAGEPRICEDETAILS);
     }
 
-    const onPresstobookingconfirm = async () => {
-        props.navigation.navigate(SCREEN.BOOKINFCONFIRMSCREEN);
+    const onPresstobookingconfirm = async (item) => {
+        item = pacakagedetails;
+        props.navigation.navigate(SCREEN.BOOKINFCONFIRMSCREEN, { item });
     }
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.BACKGROUNDCOLOR }}>
             <StatusBar hidden={false} translucent={false} backgroundColor={COLOR.STATUSBARCOLOR} barStyle={Platform.OS === 'ios' ? KEY.DARK_CONTENT : KEY.DARK_CONTENT} />
@@ -51,20 +55,20 @@ const paymentmodeScreen = (props) => {
                         <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"Payment Options"}</Text>
                     </View>
                     <View style={styles.maincard}>
-                        <View style={{ flexDirection: KEY.ROW, marginBottom: 10, marginTop: 10 }}>
+                        <View style={{ flexDirection: KEY.ROW }}>
                             <TouchableOpacity style={styles.round}>
                                 <FontAwesome name="circle" size={16} color={COLOR.DEFALUTCOLOR} />
                             </TouchableOpacity>
-                            <View style={{ flexDirection: KEY.COLUMN, marginLeft: 15 }}>
-                                <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.BLACK, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontFamily: FONT.FONT_BOLD }}>{"Magpie"}</Text>
-                                <Text style={{ width: WIDTH / 1.30, color: COLOR.LIGHT_BLACK }}>{"Instant payment via UPI/Debit/Creadit card Using Any bank accoount"}</Text>
+                            <View style={{ marginLeft: 15, marginTop: 8 }}>
+                                <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.BLACK, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontFamily: FONT.FONT_BOLD }}>{"Cash"}</Text>
+                                {/* <Text style={{ width: WIDTH / 1.30, color: COLOR.LIGHT_BLACK }}>{"Instant payment via UPI/Debit/Creadit card Using Any bank accoount"}</Text> */}
                             </View>
                         </View>
-                        <View style={{
+                        {/* <View style={{
                             borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
                             marginRight: 15, marginLeft: 15, width: WIDTH - 60, marginBottom: 10, marginTop: 10
-                        }} />
-                        <View style={{ flexDirection: KEY.ROW, marginBottom: 10 }}>
+                        }} /> */}
+                        {/* <View style={{ flexDirection: KEY.ROW, marginBottom: 10 }}>
                             <TouchableOpacity style={styles.round}>
                                 <FontAwesome name="circle" size={16} color={COLOR.DEFALUTCOLOR} />
                             </TouchableOpacity>
@@ -72,9 +76,9 @@ const paymentmodeScreen = (props) => {
                                 <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.BLACK, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontFamily: FONT.FONT_BOLD }}>{"Paytm"}</Text>
                                 <Text style={{ width: WIDTH / 1.30, color: COLOR.LIGHT_BLACK }}>{"Instant payment via UPI/Debit/Creadit card using any bank account"}</Text>
                             </View>
-                        </View>
+                        </View> */}
                     </View>
-                    <View style={{ marginTop: "60%" }}>
+                    <View style={{ marginTop: WIDTH / 1 }}>
                         <TouchableOpacity style={styles.paymentbutton} onPress={() => onPresstobookingconfirm()}>
                             <Text style={styles.buttontext}>{"Proceed to Pay $ 3800"}</Text>
                         </TouchableOpacity>
