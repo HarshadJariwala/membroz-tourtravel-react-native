@@ -196,91 +196,70 @@ const ExploreScreen = (props) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={KEY.ALWAYS}>
-                {(languageConfig.domestictext && languageConfig.domestictext.length > 0) || (domesticList && domesticList.length > 0)
-                    ?
-                    <>
-                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
-                            <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
-                                <FlatList
-                                    showsHorizontalScrollIndicator={false}
-                                    data={domesticList}
-                                    numColumns={2}
-                                    renderItem={DomesticlList}
-                                    keyExtractor={item => item._id}
-                                    style={{ flexDirection: KEY.COLUMN, }}
-                                    keyboardShouldPersistTaps={KEY.ALWAYS}
-                                    ListFooterComponent={() => (
-                                        internationList && internationList.length == 0 &&
-                                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
-                                            <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
-                                            <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
-                                        </View>
-                                    )}
-                                />
-                            </View>
-                        </View>
-                        {
-                            status == languageConfig.domestictext &&
-                            <>
-                                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
-                                    <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
-                                        <FlatList
-                                            showsHorizontalScrollIndicator={false}
-                                            data={domesticList}
-                                            numColumns={2}
-                                            renderItem={DomesticlList}
-                                            keyExtractor={item => item._id}
-                                            style={{ flexDirection: KEY.COLUMN, }}
-                                            keyboardShouldPersistTaps={KEY.ALWAYS}
-                                            ListFooterComponent={() => (
-                                                internationList && internationList.length == 0 &&
-                                                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
-                                                    <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
-                                                    <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
-                                                </View>
-                                            )}
-                                        />
+            <ScrollView showsHorizontalScrollIndicator={false} horizontal keyboardShouldPersistTaps={KEY.ALWAYS}>
+                <View style={styles.listTab}>
+                    {
+                        ListTab.map((e, index) => (
+                            <TouchableOpacity style={[styles.btnTab, status === e.status && styles.tabActive]} onPress={() => setStatusFilter(e.status, index)}>
+                                <Text style={[styles.tabText, status === e.status && styles.tabTextActive]}>
+                                    {e.status}
+                                </Text>
+                            </TouchableOpacity>
+                        ))
+                    }
+                </View>
+            </ScrollView>
+            {
+                status === languageConfig.domestictext &&
+                <>
+                    <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
+                        <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
+                            <FlatList
+                                showsHorizontalScrollIndicator={false}
+                                data={domesticList}
+                                numColumns={2}
+                                renderItem={DomesticlList}
+                                keyExtractor={item => item._id}
+                                style={{ flexDirection: KEY.COLUMN, }}
+                                keyboardShouldPersistTaps={KEY.ALWAYS}
+                                ListFooterComponent={() => (
+                                    internationList && internationList.length == 0 &&
+                                    <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
+                                        <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
+                                        <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
                                     </View>
+                                )}
+                            />
+                        </View>
+                    </View>
+                </>
+            }
+            {
+                status === languageConfig.internationaltext &&
+                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, }}>
+                    <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
+                        <FlatList
+                            showsHorizontalScrollIndicator={false}
+                            data={internationList}
+                            numColumns={2}
+                            renderItem={InternationalList}
+                            keyExtractor={item => item._id}
+                            style={{ flexDirection: KEY.ROW, }}
+                            keyboardShouldPersistTaps={KEY.ALWAYS}
+                            ListFooterComponent={() => (
+                                internationList && internationList.length == 0 &&
+                                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
+                                    <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
+                                    <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
                                 </View>
+                            )}
+                        />
+                    </View>
+                </View>
+            }
 
-                            </>
-                        }
-                        {
-                            status == languageConfig.internationaltext &&
-                            <>
-
-                                {
-                                    status == "International" &&
-                                    <>
-
-                                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, }}>
-                                            <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
-                                                <FlatList
-                                                    showsHorizontalScrollIndicator={false}
-                                                    data={internationList}
-                                                    numColumns={2}
-                                                    renderItem={InternationalList}
-                                                    keyExtractor={item => item._id}
-                                                    style={{ flexDirection: KEY.ROW, }}
-                                                    keyboardShouldPersistTaps={KEY.ALWAYS}
-                                                    ListFooterComponent={() => (
-                                                        internationList && internationList.length == 0 &&
-                                                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER, width: WIDTH * 0.9 }}>
-                                                            <Image source={IMAGE.NODATA} style={{ height: 150, width: 200, marginTop: HEIGHT * 0.2 }} resizeMode={KEY.CONTAIN} />
-                                                            <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_NORMAL, fontWeight: FONT.FONT_WEIGHT_REGULAR, color: COLOR.TAUPE_GRAY, marginTop: 10 }}>{languageConfig.norecordtext}</Text>
-                                                        </View>
-                                                    )}
-                                                />
-                                            </View>
-                                        </View>
-                                    </>
-                                }
-                            </ScrollView>
-                        }
-            // {loading ? <Loader /> : null}
-                    </SafeAreaView>
+        </SafeAreaView >
     )
 }
 
-                export default ExploreScreen;
+export default ExploreScreen;
