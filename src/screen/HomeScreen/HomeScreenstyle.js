@@ -17,14 +17,14 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.23,
         shadowRadius: 2.62,
         elevation: 3,
-        borderRadius: 10,
+        //   borderRadius: 10,
         marginHorizontal: 5,
         marginTop: 8,
         marginBottom: 5,
     },
     cardimagestyle: {
-        width: 48,
-        height: 48,
+        width: 38,
+        height: 38,
         borderRadius: 5,
     },
     text1: {

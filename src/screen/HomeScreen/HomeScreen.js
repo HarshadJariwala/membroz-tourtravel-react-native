@@ -353,22 +353,18 @@ const HomeScreen = (props) => {
 
     //RENDER CATEGORY SERVICE FLATLIST
     const CatogoryList = ({ item, index }) => (
-        <TouchableOpacity style={styles.categorymaincard}>
-            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, }}>
-                <Image style={styles.cardimagestyle}
-                    // source={{
-                    //     uri: item && item.image && item.image &&
-                    //         item.image.attachment ? item.image.attachment : logo
-                    // }}
-                    source={IMAGE.TRAVEL1}
-                />
-                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
-                    <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, color: COLOR.BLACK }}>
-                        {item.property && item.property.title}
-                    </Text>
-                </View>
-                <View>
-                </View>
+        <TouchableOpacity style={{ flexDirection: KEY.COLUMN, paddingHorizontal: 0 }}
+            onPress={() => viewCategoryScreen(item)}>
+            <View style={{
+                margin: 10, justifyContent: KEY.CENTER, alignItems: KEY.CENTER,
+                width: WIDTH / 6 + 10, height: WIDTH / 6 + 10, borderRadius: 100,
+                borderWidth: 1, borderColor: COLOR.BLACK
+            }}>
+                <Image style={styles.dotImage}
+                    source={{
+                        uri: item && item.image && item.image[0] &&
+                            item.image[0].attachment ? item.image[0].attachment : logo
+                    }} />
             </View>
             <Text style={{
                 textAlign: KEY.CENTER, alignSelf: KEY.CENTER,
