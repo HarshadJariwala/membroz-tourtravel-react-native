@@ -622,4 +622,8 @@ export default {
     Podestination: "Popular Destination Pacakages",
     PopularActivitesText: "Popular Activites",
 
+    domestictext: "Domestic",
+    internationaltext: "International",
+    highLighttext: "HighLight"
+
 }

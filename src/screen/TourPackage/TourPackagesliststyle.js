@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         fontWeight: FONT.FONT_WEIGHT_MEDIAM,
         color: COLOR.BLACK,
         marginBottom: 5,
-        marginLeft: 5
+        marginLeft: 15
     },
     photogallerystyle: {
         width: WIDTH / 2 - 30,

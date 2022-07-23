@@ -74,7 +74,7 @@ const PackagePriceDetails = (props) => {
                 <View style={styles.maincontainer}>
                     <View style={styles.maincard}>
                         <View style={{ marginLeft: 10, marginTop: 5, marginBottom: 5 }}>
-                            <Text style={{ fontSize: FONT.FONT_SIZE_20, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}> {(pacakagedetails && pacakagedetails && pacakagedetails.title)} </Text>
+                            <Text style={{ fontSize: FONT.FONT_SIZE_20, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}> {pacakagedetails && pacakagedetails && pacakagedetails.title} </Text>
                         </View>
                         <View style={{ marginLeft: 15, marginBottom: 10, flexDirection: KEY.COLUMN, }}>
                             <Text style={{ color: COLOR.DEFALUTCOLOR, fontSize: FONT.FONT_SIZE_16, marginBottom: 5 }}>{pacakagedetails && pacakagedetails && pacakagedetails.duration}</Text>
@@ -121,7 +121,7 @@ const PackagePriceDetails = (props) => {
                         }} />
                         <View style={{ flex: 1, flexDirection: KEY.ROW, justifyContent: KEY.SPACEBETWEEN, marginLeft: 10, marginRight: 10, marginTop: 10, marginBottom: 10 }}>
                             <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"Total Payable Amount"}</Text>
-                            <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"$3800"}</Text>
+                            <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{currencySymbol + (pacakagedetails && pacakagedetails && pacakagedetails.items[0].cost)}</Text>
                         </View>
 
                     </View>
@@ -136,12 +136,12 @@ const PackagePriceDetails = (props) => {
                     </View>
                 </View>
             </ScrollView>
-            <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, marginTop: 50, }}>
+            <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, }}>
                 <View style={styles.blackcard}>
                     <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW }}>
                         <View style={{ flexDirection: KEY.COLUMN, marginLeft: 10 }}>
                             <Text style={{ color: COLOR.WHITE, fontSize: FONT.FONT_SIZE_16, }}>{"Total Amount"}</Text>
-                            <Text style={{ color: COLOR.WHITE, fontSize: FONT.FONT_SIZE_16, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontFamily: FONT.FONT_BOLD }}>{"$3800"}</Text>
+                            <Text style={{ color: COLOR.WHITE, fontSize: FONT.FONT_SIZE_16, fontWeight: FONT.FONT_WEIGHT_MEDIAM, fontFamily: FONT.FONT_BOLD }}>{currencySymbol + (pacakagedetails && pacakagedetails && pacakagedetails.items[0].cost)}</Text>
                         </View>
                         <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, marginRight: 10, }}>
                             <TouchableOpacity style={styles.continuebutton} onPress={() => onPresstopaymentmode()}>

@@ -19,10 +19,10 @@ const WIDTH = Dimensions.get('window').width;
 
 const ListTab = [
     {
-        'status': "Domestic"
+        'status': languageConfig.domestictexttext
     },
     {
-        'status': "International"
+        'status': languageConfig.internationaltext
     }
 ]
 
@@ -195,7 +195,7 @@ const ExploreScreen = (props) => {
                 </View>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={KEY.ALWAYS}>
-                {("Domestic" && "Domestic".length > 0) || (domesticList && domesticList.length > 0)
+                {(languageConfig.domestictext && languageConfig.domestictext.length > 0) || (domesticList && domesticList.length > 0)
                     ?
                     <>
                         <View style={styles.listTab}>
@@ -210,7 +210,7 @@ const ExploreScreen = (props) => {
                             }
                         </View>
                         {
-                            status == "Domestic" &&
+                            status == languageConfig.domestictext &&
                             <>
                                 <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
                                     <View style={{ flexDirection: KEY.ROW, marginTop: 10, marginBottom: 10, margin: 10 }}>
@@ -236,7 +236,7 @@ const ExploreScreen = (props) => {
                             </>
                         }
                         {
-                            status == "International" &&
+                            status == languageConfig.internationaltext &&
                             <>
 
                                 <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER, }}>

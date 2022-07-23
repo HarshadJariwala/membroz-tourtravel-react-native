@@ -161,18 +161,290 @@ const TourPackageListScreen = (props) => {
 
 
                             {status === "Itinerary" &&
-                                pacakagedetails && pacakagedetails?.destinations[0].description ?
-                                <Text style={styles.highlighttext}>
-                                    <RenderHTML contentWidth={WIDTH - 10}
-                                        source={source}
-                                        baseStyle={styles.tagsStyles} />
-                                </Text>
-                                :
-                                <View style={{ margin: 5, }} />
+                                <>
+                                    <View style={{ marginLeft: 10 }}>
+                                        <Text style={styles.texttitle}>{"Itinerary"}</Text>
+                                        <Text style={styles.texttitle}>{"Day 1"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                    <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                        <Image source={IMAGE.TRAVEL1} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                        <View style={{ flexDirection: KEY.COLUMN }}>
+                                            <Text style={styles.texttitle}>{"Fight transafer"}</Text>
+                                            <Text style={{
+                                                fontSize: FONT.FONT_SIZE_16,
+                                                color: COLOR.BLACK,
+                                                marginBottom: 5,
+                                                marginLeft: 15
+                                            }}>{"From New Delhi to male"}</Text>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <Text style={{
+                                            fontSize: FONT.FONT_SIZE_16,
+                                            color: COLOR.BLACK,
+                                            marginBottom: 5,
+                                            marginLeft: 15,
+                                        }}>{"New Delhi Fri, 7 Oct 10:00 - Male Fri, 7 Oct 13:55"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                    <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                        <Image source={IMAGE.TRAVEL2} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                        <View style={{ flexDirection: KEY.COLUMN }}>
+                                            <Text style={styles.texttitle}>{"Check in at ABC Hotel"}</Text>
+                                            <Text style={{
+                                                fontSize: FONT.FONT_SIZE_16,
+                                                color: COLOR.BLACK,
+                                                marginBottom: 5,
+                                                marginLeft: 15
+                                            }}>{"XYZ area, city"}</Text>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <Text style={{
+                                            fontSize: FONT.FONT_SIZE_16,
+                                            color: COLOR.BLACK,
+                                            marginBottom: 5,
+                                            marginLeft: 15,
+                                        }} >{"Fri, 2 Sep 2022 - Mon, 5 Sep 2022 Standard Room"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                    <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                        <Image source={IMAGE.TRAVEL3} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                        <View style={{ flexDirection: KEY.COLUMN }}>
+                                            <Text style={styles.texttitle}>{"ABC Beach Visit"}</Text>
+                                            <Text style={{
+                                                fontSize: FONT.FONT_SIZE_16,
+                                                color: COLOR.BLACK,
+                                                marginBottom: 5,
+                                                marginLeft: 15
+                                            }}>{"XYZ area, this beanch"}</Text>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <Text style={{
+                                            fontSize: FONT.FONT_SIZE_16,
+                                            color: COLOR.BLACK,
+                                            marginLeft: 15,
+                                            marginBottom: 15
+                                        }} >{"Lorem Ipsum Dolor sit amet, consectetuer lipicing elit,sed diam."}</Text>
+                                    </View>
+                                    <View style={{ marginLeft: 10 }}>
+                                        <Text style={styles.texttitle}>{"Day 2"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                    <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                        <Image source={IMAGE.TRAVEL1} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                        <View style={{ flexDirection: KEY.COLUMN }}>
+                                            <Text style={styles.texttitle}>{"ABC Beach Visit"}</Text>
+                                            <Text style={{
+                                                fontSize: FONT.FONT_SIZE_16,
+                                                color: COLOR.BLACK,
+                                                marginBottom: 5,
+                                                marginLeft: 15
+                                            }}>{"XYZ area, this Beach"}</Text>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <Text style={{
+                                            fontSize: FONT.FONT_SIZE_16,
+                                            color: COLOR.BLACK,
+                                            marginBottom: 5,
+                                            marginLeft: 15,
+                                        }} >{"Fri, 2 Sep 2022 - Mon, 5 Sep 2022 Standard Room"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                    <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                        <Image source={IMAGE.TRAVEL2} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                        <View style={{ flexDirection: KEY.COLUMN }}>
+                                            <Text style={styles.texttitle}>{"Check in at ABC Hotel"}</Text>
+                                            <Text style={{
+                                                fontSize: FONT.FONT_SIZE_16,
+                                                color: COLOR.BLACK,
+                                                marginBottom: 5,
+                                                marginLeft: 15
+                                            }}>{"XYZ area, city"}</Text>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <Text style={{
+                                            fontSize: FONT.FONT_SIZE_16,
+                                            color: COLOR.BLACK,
+                                            marginBottom: 5,
+                                            marginLeft: 15,
+                                        }} >{"Fri, 2 Sep 2022 - Mon, 5 Sep 2022 Standard Room"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                    <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                        <Image source={IMAGE.TRAVEL3} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                        <View style={{ flexDirection: KEY.COLUMN }}>
+                                            <Text style={styles.texttitle}>{"Check in at ABC Hotel"}</Text>
+                                            <Text style={{
+                                                fontSize: FONT.FONT_SIZE_16,
+                                                color: COLOR.BLACK,
+                                                marginBottom: 5,
+                                                marginLeft: 15
+                                            }}>{"XYZ area, city"}</Text>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <Text style={{
+                                            fontSize: FONT.FONT_SIZE_16,
+                                            color: COLOR.BLACK,
+                                            marginBottom: 5,
+                                            marginLeft: 15,
+                                        }} >{"Fri, 2 Sep 2022 - Mon, 5 Sep 2022 Standard Room"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                    <View style={{ marginLeft: 10 }}>
+                                        <Text style={styles.texttitle}>{"Day 3"}</Text>
+                                    </View>
+                                    <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                        <Image source={IMAGE.TRAVEL1} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                        <View style={{ flexDirection: KEY.COLUMN }}>
+                                            <Text style={styles.texttitle}>{"Check in at ABC Hotel"}</Text>
+                                            <Text style={{
+                                                fontSize: FONT.FONT_SIZE_16,
+                                                color: COLOR.BLACK,
+                                                marginBottom: 5,
+                                                marginLeft: 15
+                                            }}>{"XYZ area, city"}</Text>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <Text style={{
+                                            fontSize: FONT.FONT_SIZE_16,
+                                            color: COLOR.BLACK,
+                                            marginBottom: 5,
+                                            marginLeft: 15,
+                                        }} >{"Fri, 2 Sep 2022 - Mon, 5 Sep 2022 Standard Room"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                    <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                        <Image source={IMAGE.TRAVEL2} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                        <View style={{ flexDirection: KEY.COLUMN }}>
+                                            <Text style={styles.texttitle}>{"Check in at ABC Hotel"}</Text>
+                                            <Text style={{
+                                                fontSize: FONT.FONT_SIZE_16,
+                                                color: COLOR.BLACK,
+                                                marginBottom: 5,
+                                                marginLeft: 15
+                                            }}>{"XYZ area, city"}</Text>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <Text style={{
+                                            fontSize: FONT.FONT_SIZE_16,
+                                            color: COLOR.BLACK,
+                                            marginBottom: 5,
+                                            marginLeft: 15,
+                                        }} >{"Fri, 2 Sep 2022 - Mon, 5 Sep 2022 Standard Room"}</Text>
+                                    </View>
+                                    <View style={{
+                                        borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                        marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                                    }} />
+                                </>
                             }
                         </View>
+
                     </View>
+                    {status === "Activity" &&
+                        <>
+                            <View style={{ marginLeft: 10 }}>
+                                <Text style={styles.texttitle}>{"Itinerary"}</Text>
+                                <Text style={styles.texttitle}>{"Day 1"}</Text>
+                            </View>
+                            <View style={{
+                                borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                            }} />
+                            <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                <Image source={IMAGE.TRAVEL1} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                <View style={{ flexDirection: KEY.COLUMN }}>
+                                    <Text style={styles.texttitle}>{"Imagica Theme"}</Text>
+                                    <Text style={{
+                                        fontSize: FONT.FONT_SIZE_16,
+                                        color: COLOR.BLACK,
+                                        marginBottom: 5,
+                                        marginLeft: 15
+                                    }}>{"Mumbai (India)"}</Text>
+
+                                </View>
+                            </View>
+                            <View>
+                                <Text style={{
+                                    fontSize: FONT.FONT_SIZE_16,
+                                    color: COLOR.BLACK,
+                                    marginBottom: 5,
+                                    marginLeft: 15,
+                                }}>{"09:00 PM to 06:00 PM"}</Text>
+                            </View>
+                            <View style={{
+                                borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                            }} />
+                            <View style={{ flexDirection: KEY.ROW, marginBottom: 5 }}>
+                                <Image source={IMAGE.TRAVEL1} style={{ width: 60, height: 60, borderRadius: 10, marginLeft: 15 }} />
+                                <View style={{ flexDirection: KEY.COLUMN }}>
+                                    <Text style={styles.texttitle}>{"Goa Theme"}</Text>
+                                    <Text style={{
+                                        fontSize: FONT.FONT_SIZE_16,
+                                        color: COLOR.BLACK,
+                                        marginBottom: 5,
+                                        marginLeft: 15
+                                    }}>{"Goa (India)"}</Text>
+
+                                </View>
+                            </View>
+                            <View>
+                                <Text style={{
+                                    fontSize: FONT.FONT_SIZE_16,
+                                    color: COLOR.BLACK,
+                                    marginBottom: 5,
+                                    marginLeft: 15,
+                                }}>{"09:00 PM to 06:00 PM"}</Text>
+                            </View>
+                            <View style={{
+                                borderWidth: 0.2, marginTop: 5, borderColor: COLOR.BRIGHT_GRAY,
+                                marginRight: 15, marginLeft: 15, width: WIDTH - 30, marginBottom: 10, marginTop: 10
+                            }} />
+                        </>
+                    }
                 </View>
+
             </ScrollView>
             <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
                 <View style={styles.blackcard}>

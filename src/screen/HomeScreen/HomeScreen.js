@@ -243,16 +243,19 @@ const HomeScreen = (props) => {
     //RENDER CATEGORY SERVICE FLATLIST
     const CatogoryList = ({ item, index }) => (
         <TouchableOpacity style={styles.categorymaincard}>
-            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, margin: 5, marginLeft: 6 }}>
+            <View style={{ justifyContent: KEY.SPACEBETWEEN, flex: 1, flexDirection: KEY.ROW, }}>
                 <Image style={styles.cardimagestyle}
-                    source={{
-                        uri: item && item.image && item.image &&
-                            item.image.attachment ? item.image.attachment : logo
-                    }}
+                    // source={{
+                    //     uri: item && item.image && item.image &&
+                    //         item.image.attachment ? item.image.attachment : logo
+                    // }}
+                    source={IMAGE.TRAVEL1}
                 />
-                <Text style={{ marginTop: 7, fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, color: COLOR.BLACK }}>
-                    {item.property && item.property.title}
-                </Text>
+                <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
+                    <Text style={{ fontSize: FONT.FONT_SIZE_16, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM, color: COLOR.BLACK }}>
+                        {item.property && item.property.title}
+                    </Text>
+                </View>
                 <View>
                 </View>
             </View>

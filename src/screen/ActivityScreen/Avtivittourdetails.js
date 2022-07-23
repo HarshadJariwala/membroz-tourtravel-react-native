@@ -92,7 +92,7 @@ const Avtivittourdetails = (props) => {
                     <View style={styles.maincard}>
                         <View style={{ flexDirection: KEY.COLUMN, marginLeft: 10, marginRight: 10 }}>
                             <Text style={styles.titletext}>{Activitydetailslist && Activitydetailslist.property && Activitydetailslist.property.title}</Text>
-                            <View style={{ flexDirection: KEY.ROW, marginBottom: 10, }}>
+                            <View style={{ flexDirection: KEY.ROW, marginBottom: 10, marginLeft: 10 }}>
                                 <Feather name="clock" size={18} color={COLOR.DEFALUTCOLOR} style={{ marginTop: 2 }} />
                                 <Text style={[styles.texttitle, { marginLeft: 5 }]}>{hours + minutes + ' ' + "Hours"}</Text>
                             </View>

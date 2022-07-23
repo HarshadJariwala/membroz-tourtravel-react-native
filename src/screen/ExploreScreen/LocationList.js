@@ -22,13 +22,13 @@ const WIDTH = Dimensions.get('window').width;
 
 const ListTab = [
     {
-        'status': "OverView"
+        'status': languageConfig.overview
     },
     {
-        'status': "HighLight"
+        'status': languageConfig.highLighttext
     },
     {
-        'status': "Gallery"
+        'status': languageConfig.gallery
     }
 ]
 
@@ -43,7 +43,7 @@ const LocationList = (props) => {
     const [gallery, setGallery] = useState([])
     const [highlight, setHightLight] = useState([]);
     const [customerInfo, setCustomerInfo] = useState(null);
-    const [status, setStatus] = useState("OverView");
+    const [status, setStatus] = useState(languageConfig.overview);
     const imageGallery = LocationList?.property?.image.length > 0 ? LocationList.property.image : null;
 
     const setStatusFilter = (status, index) => {
@@ -146,7 +146,7 @@ const LocationList = (props) => {
                             </View>
                         </ScrollView>
 
-                        {status === "OverView" &&
+                        {status === languageConfig.overview &&
                             locationlist && locationlist?.property.description ?
                             <Text style={styles.descripationText}>
                                 <RenderHTML contentWidth={WIDTH - 10}
@@ -157,7 +157,7 @@ const LocationList = (props) => {
                             <View style={{ margin: 5, }} />
                         }
 
-                        {status === "Gallery" &&
+                        {status === languageConfig.gallery &&
                             <FlatList
                                 data={imageGallery}
                                 renderItem={({ item }) => (
@@ -178,8 +178,7 @@ const LocationList = (props) => {
                                 keyExtractor={(item, index) => index}
                             />
                         }
-
-                        {status === "HighLight" &&
+                        {status === languageConfig.highLighttext &&
                             locationlist && locationlist?.property.highlights ?
                             <Text style={styles.highlighttext}>
                                 <RenderHTML contentWidth={WIDTH - 10}

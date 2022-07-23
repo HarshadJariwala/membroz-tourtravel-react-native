@@ -8,21 +8,10 @@ const WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     maincard: {
-        width: WIDTH - 0,
-        // borderRadius: 5,
         flexDirection: KEY.COLUMN,
         backgroundColor: COLOR.WHITE,
-        shadowColor: COLOR.BLACK,
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-        elevation: 3,
         marginTop: 10,
         marginBottom: 10,
-        borderRadius: 10
     },
     titletext: {
         fontSize: FONT.FONT_SIZE_18,
@@ -31,10 +20,12 @@ const styles = StyleSheet.create({
         color: COLOR.BLACK,
         marginBottom: 5,
         marginTop: 10,
+        marginLeft: 10
     },
     texttitle: {
         fontSize: FONT.FONT_SIZE_16,
         color: COLOR.LIGHT_BLACK,
+        marginLeft: 10
     },
     blackcard: {
         width: WIDTH,

@@ -47,8 +47,8 @@ const paymentmodeScreen = (props) => {
                 <View style={styles.maincontainer}>
                     <View style={styles.maincard}>
                         <View style={{ marginLeft: 10, marginTop: 5, marginBottom: 5, flexDirection: KEY.COLUMN }}>
-                            <Text style={{ fontSize: FONT.FONT_SIZE_20, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}> {"Maldives"} </Text>
-                            <Text style={{ color: COLOR.DEFALUTCOLOR, fontSize: FONT.FONT_SIZE_16, marginBottom: 5, marginLeft: 5 }}>{"4N/5D"}</Text>
+                            <Text style={{ fontSize: FONT.FONT_SIZE_20, color: COLOR.BLACK, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{pacakagedetails && pacakagedetails && pacakagedetails.title} </Text>
+                            <Text style={{ color: COLOR.DEFALUTCOLOR, fontSize: FONT.FONT_SIZE_16, marginBottom: 5, marginLeft: 5 }}>{pacakagedetails && pacakagedetails && pacakagedetails.duration}</Text>
                         </View>
                     </View>
                     <View style={{ marginLeft: 15, alignSelf: KEY.FLEX_START }}>
@@ -80,7 +80,7 @@ const paymentmodeScreen = (props) => {
                     </View>
                     <View style={{ marginTop: WIDTH / 1 }}>
                         <TouchableOpacity style={styles.paymentbutton} onPress={() => onPresstobookingconfirm()}>
-                            <Text style={styles.buttontext}>{"Proceed to Pay $ 3800"}</Text>
+                            <Text style={styles.buttontext}>{"Proceed to Pay $" + " " + (pacakagedetails && pacakagedetails && pacakagedetails.items[0].cost)}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

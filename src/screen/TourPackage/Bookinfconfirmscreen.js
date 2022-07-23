@@ -131,13 +131,13 @@ const Bookinfconfirmscreen = (props) => {
                             <Text style={{ fontSize: FONT.FONT_SIZE_16, color: COLOR.DEFALUTCOLOR, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"$3800"}</Text>
                         </View>
                     </View>
-                    <View>
-                        <TouchableOpacity style={styles.paymentbutton} onPress={() => onPresstoHomeScreen()}>
-                            <Text style={styles.buttontext}>{"Ok"}</Text>
-                        </TouchableOpacity>
-                    </View>
                 </View>
             </ScrollView>
+            <View style={{ position: "absolute", bottom: 0, justifyContent: KEY.CENTER, alignItems: KEY.CENTER, alignSelf: KEY.CENTER }}>
+                <TouchableOpacity style={styles.paymentbutton} onPress={() => onPresstoHomeScreen()}>
+                    <Text style={styles.buttontext}>{"Ok"}</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
 }

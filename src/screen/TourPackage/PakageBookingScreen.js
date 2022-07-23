@@ -184,14 +184,15 @@ const PakageBookingScreen = (props) => {
 
 
                 </View>
-                <View style={styles.blackcard}>
-                    <View style={{ alignSelf: KEY.FLEX_END, marginRight: 10 }}>
-                        <TouchableOpacity style={styles.continuebutton} onPress={() => onPresstoPackagepricedetails()}>
-                            <Text style={{ fontSize: FONT.FONT_SIZE_18, color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"Continue"}</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+
             </ScrollView>
+            <View style={styles.blackcard}>
+                <View style={{ alignSelf: KEY.FLEX_END, marginRight: 10 }}>
+                    <TouchableOpacity style={styles.continuebutton} onPress={() => onPresstoPackagepricedetails()}>
+                        <Text style={{ fontSize: FONT.FONT_SIZE_18, color: COLOR.WHITE, fontFamily: FONT.FONT_BOLD, fontWeight: FONT.FONT_WEIGHT_MEDIAM }}>{"Continue"}</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </SafeAreaView>
 
     )

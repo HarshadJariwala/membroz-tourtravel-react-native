@@ -24,7 +24,6 @@ import Toast from 'react-native-simple-toast';
 import * as COLOR from '../../styles/colors';
 import * as IMAGE from '../../styles/image';
 import styles from './SubmitQueryStyle';
-import RNFetchBlob from 'rn-fetch-blob';
 
 const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
