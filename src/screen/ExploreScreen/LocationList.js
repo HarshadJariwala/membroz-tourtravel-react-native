@@ -34,14 +34,8 @@ const ListTab = [
 
 const LocationList = (props) => {
     const LocationList = props.route.params === undefined ? null : props.route.params.item;
-
     const [locationlist, setLocationList] = useState(LocationList);
-    console.log("locationlist", locationlist);
-    const [overview, setOverView] = useState([]);
     const [logo, setLogo] = useState(null);
-    const [loading, setloading] = useState(true);
-    const [gallery, setGallery] = useState([])
-    const [highlight, setHightLight] = useState([]);
     const [customerInfo, setCustomerInfo] = useState(null);
     const [status, setStatus] = useState(languageConfig.overview);
     const imageGallery = LocationList?.property?.image.length > 0 ? LocationList.property.image : null;
@@ -56,7 +50,7 @@ const LocationList = (props) => {
     }
 
     useEffect(() => {
-    }, [logo, loading, gallery, overview, highlight, status]);
+    }, [logo, status]);
 
     useEffect(() => {
         //LANGUAGE MANAGEMENT FUNCTION
@@ -73,16 +67,11 @@ const LocationList = (props) => {
         }
     };
 
-
     //GET MEMBER DATA IN MOBILE LOCAL STORAGE
     const getMemberDeatilsLocalStorage = async () => {
-        var memberInfo = await LocalService.LocalStorageService();
-        if (memberInfo) {
+        var customerInfo = await LocalService.LocalStorageService();
+        if (customerInfo) {
             setCustomerInfo(memberInfo);
-            getmemberid = memberInfo?._id;
-            getDomesticList();
-        } else {
-            getDomesticList();
         }
     }
 
@@ -128,7 +117,7 @@ const LocationList = (props) => {
 
                     <View style={styles.maincard}>
                         <View style={{ marginLeft: 10, marginTop: 10, marginBottom: 10, flexDirection: KEY.COLUMN }}>
-                            <Text style={styles.titletext}>{locationlist && locationlist.property && locationlist.property.city}</Text>
+                            <Text style={styles.titletext}>{locationlist && locationlist.property && locationlist?.property?.city}</Text>
 
                         </View>
 
@@ -147,7 +136,7 @@ const LocationList = (props) => {
                         </ScrollView>
 
                         {status === languageConfig.overview &&
-                            locationlist && locationlist?.property.description ?
+                            locationlist && locationlist?.property && locationlist?.property?.description ?
                             <Text style={styles.descripationText}>
                                 <RenderHTML contentWidth={WIDTH - 10}
                                     source={source}

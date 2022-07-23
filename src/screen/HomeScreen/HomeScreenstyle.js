@@ -7,7 +7,7 @@ const WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     categorymaincard: {
-        width: WIDTH / 2 - 30,
+        //width: WIDTH / 2,
         height: 48,
         shadowColor: COLOR.BLACK,
         shadowOffset: {
@@ -34,11 +34,18 @@ const styles = StyleSheet.create({
         color: COLOR.BLACK
     },
     image: {
-        width: WIDTH,
-        height: 200
+        width: WIDTH - 30,
+        height: 200,
+        borderRadius: 20,
     },
     titletext: {
-        fontSize: FONT.FONT_SIZE_16,
+        fontSize: FONT.FONT_SIZE_14,
+        fontFamily: FONT.FONT_BOLD,
+        fontWeight: FONT.FONT_WEIGHT_MEDIAM,
+        color: COLOR.BLACK,
+    },
+    menuTitletext: {
+        fontSize: FONT.FONT_SIZE_18,
         fontFamily: FONT.FONT_BOLD,
         fontWeight: FONT.FONT_WEIGHT_MEDIAM,
         color: COLOR.BLACK,
@@ -136,6 +143,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         marginRight: 10
+    },
+    dotImage: {
+        width: WIDTH / 6,
+        height: WIDTH / 6,
+        borderRadius: 100,
     },
 })
 
